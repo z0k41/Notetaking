@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Notes - Secure Local Note Taking</title>
+    <title>Privacy Notes - Ultra Modern Note Taking</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
         
         * {
             margin: 0;
@@ -14,65 +14,67 @@
         }
 
         :root {
-            --bg-primary: #fafbfc;
-            --bg-secondary: #ffffff;
-            --bg-tertiary: #f8fafc;
-            --bg-accent: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --bg-card: rgba(255, 255, 255, 0.8);
-            --bg-glass: rgba(255, 255, 255, 0.25);
-            --text-primary: #1a202c;
-            --text-secondary: #4a5568;
-            --text-muted: #718096;
-            --text-accent: #667eea;
-            --border: rgba(226, 232, 240, 0.8);
-            --border-hover: rgba(102, 126, 234, 0.3);
-            --accent: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --accent-solid: #667eea;
-            --accent-hover: #5a67d8;
-            --success: #48bb78;
-            --danger: #f56565;
-            --warning: #ed8936;
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            --blur: blur(20px);
-            --radius: 16px;
-            --radius-lg: 24px;
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #111118;
+            --bg-tertiary: #1a1a24;
+            --bg-card: rgba(26, 26, 36, 0.6);
+            --bg-glass: rgba(255, 255, 255, 0.03);
+            --bg-glass-strong: rgba(255, 255, 255, 0.08);
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0ab;
+            --text-muted: #6b6b76;
+            --accent-primary: #6366f1;
+            --accent-secondary: #8b5cf6;
+            --accent-tertiary: #06b6d4;
+            --accent-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+            --accent-gradient-hover: linear-gradient(135deg, #5855eb 0%, #7c3aed 50%, #0891b2 100%);
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(255, 255, 255, 0.16);
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+            --shadow: 0 4px 8px rgba(0, 0, 0, 0.4), 0 2px 4px rgba(0, 0, 0, 0.2);
+            --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.3);
+            --shadow-xl: 0 16px 32px rgba(0, 0, 0, 0.6), 0 8px 16px rgba(0, 0, 0, 0.4);
+            --shadow-glow: 0 0 20px rgba(99, 102, 241, 0.3);
+            --blur: blur(24px);
+            --blur-strong: blur(40px);
+            --radius: 20px;
+            --radius-lg: 32px;
+            --radius-xl: 48px;
         }
 
-        [data-theme="dark"] {
-            --bg-primary: #0d1117;
-            --bg-secondary: #161b22;
-            --bg-tertiary: #21262d;
-            --bg-accent: linear-gradient(135deg, #4c51bf 0%, #553c9a 100%);
-            --bg-card: rgba(22, 27, 34, 0.8);
-            --bg-glass: rgba(22, 27, 34, 0.25);
-            --text-primary: #f0f6fc;
-            --text-secondary: #c9d1d9;
-            --text-muted: #8b949e;
-            --text-accent: #79c0ff;
-            --border: rgba(48, 54, 61, 0.8);
-            --border-hover: rgba(121, 192, 255, 0.3);
-            --accent: linear-gradient(135deg, #79c0ff 0%, #a855f7 100%);
-            --accent-solid: #79c0ff;
-            --accent-hover: #58a6ff;
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
-            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+        [data-theme="light"] {
+            --bg-primary: #fafbff;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #f8fafc;
+            --bg-card: rgba(255, 255, 255, 0.8);
+            --bg-glass: rgba(255, 255, 255, 0.4);
+            --bg-glass-strong: rgba(255, 255, 255, 0.7);
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --border: rgba(0, 0, 0, 0.06);
+            --border-hover: rgba(0, 0, 0, 0.12);
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 8px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+            --shadow-xl: 0 16px 32px rgba(0, 0, 0, 0.16), 0 8px 16px rgba(0, 0, 0, 0.08);
+            --shadow-glow: 0 0 20px rgba(99, 102, 241, 0.2);
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
             overflow-x: hidden;
+            position: relative;
         }
 
+        /* Animated Background */
         body::before {
             content: '';
             position: fixed;
@@ -81,27 +83,66 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(circle at 20% 80%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
+                radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 40% 60%, rgba(6, 182, 212, 0.1) 0%, transparent 40%);
+            animation: backgroundShift 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(45deg, transparent 30%, rgba(99, 102, 241, 0.02) 50%, transparent 70%),
+                linear-gradient(-45deg, transparent 30%, rgba(139, 92, 246, 0.02) 50%, transparent 70%);
+            animation: meshMove 15s linear infinite;
             pointer-events: none;
             z-index: -1;
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
+        @keyframes backgroundShift {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            33% { transform: scale(1.1) rotate(1deg); }
+            66% { transform: scale(0.9) rotate(-1deg); }
         }
 
+        @keyframes meshMove {
+            0% { transform: translateX(-100px) translateY(-100px); }
+            100% { transform: translateX(100px) translateY(100px); }
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Floating Header */
         header {
-            background: var(--bg-glass);
-            backdrop-filter: var(--blur);
-            -webkit-backdrop-filter: var(--blur);
-            border-bottom: 1px solid var(--border);
-            padding: 1.5rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            right: 2rem;
+            background: var(--bg-glass-strong);
+            backdrop-filter: var(--blur-strong);
+            -webkit-backdrop-filter: var(--blur-strong);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem 2rem;
+            z-index: 1000;
+            box-shadow: var(--shadow-xl);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        header:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl), var(--shadow-glow);
         }
 
         .header-content {
@@ -114,36 +155,49 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 1rem;
             font-size: 1.5rem;
-            font-weight: 700;
+            font-weight: 800;
             color: var(--text-primary);
             text-decoration: none;
+            position: relative;
         }
 
         .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            border-radius: 12px;
+            width: 48px;
+            height: 48px;
+            background: var(--accent-gradient);
+            border-radius: var(--radius);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.25rem;
-            box-shadow: var(--shadow);
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-lg);
             position: relative;
             overflow: hidden;
+            animation: logoFloat 6s ease-in-out infinite;
         }
 
         .logo-icon::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(255,255,255,0.2) 0%, transparent 100%);
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: logoShine 3s linear infinite;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-4px) rotate(2deg); }
+        }
+
+        @keyframes logoShine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
         }
 
         .header-actions {
@@ -152,30 +206,33 @@
             gap: 1rem;
         }
 
-        .search-box {
+        .search-container {
             position: relative;
+            overflow: hidden;
+            border-radius: var(--radius);
         }
 
         .search-input {
-            padding: 0.75rem 1rem 0.75rem 3rem;
+            padding: 1rem 1.5rem 1rem 3.5rem;
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            background: var(--bg-card);
+            background: var(--bg-glass);
             backdrop-filter: var(--blur);
             -webkit-backdrop-filter: var(--blur);
             color: var(--text-primary);
-            font-size: 0.9rem;
-            font-weight: 400;
-            width: 280px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: var(--shadow-sm);
+            font-size: 0.95rem;
+            font-weight: 500;
+            width: 320px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow);
         }
 
         .search-input:focus {
             outline: none;
-            border-color: var(--accent-solid);
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1), var(--shadow);
-            transform: translateY(-1px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1), var(--shadow-lg);
+            transform: translateY(-2px);
+            background: var(--bg-glass-strong);
         }
 
         .search-input::placeholder {
@@ -185,33 +242,35 @@
 
         .search-icon {
             position: absolute;
-            left: 1rem;
+            left: 1.25rem;
             top: 50%;
             transform: translateY(-50%);
             color: var(--text-muted);
-            font-size: 1.1rem;
-            transition: color 0.2s ease;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
         }
 
         .search-input:focus + .search-icon {
-            color: var(--accent-solid);
+            color: var(--accent-primary);
+            transform: translateY(-50%) scale(1.1);
         }
 
         .btn {
-            padding: 0.75rem 1.5rem;
+            padding: 1rem 2rem;
             border: none;
             border-radius: var(--radius);
-            font-size: 0.9rem;
-            font-weight: 500;
+            font-size: 0.95rem;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
             text-decoration: none;
             position: relative;
             overflow: hidden;
             font-family: inherit;
+            letter-spacing: -0.01em;
         }
 
         .btn::before {
@@ -222,7 +281,7 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
+            transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .btn:hover::before {
@@ -230,68 +289,72 @@
         }
 
         .btn-primary {
-            background: var(--accent);
+            background: var(--accent-gradient);
             color: white;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-lg);
             border: 1px solid transparent;
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
+            background: var(--accent-gradient-hover);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl), var(--shadow-glow);
         }
 
         .btn-primary:active {
-            transform: translateY(0);
+            transform: translateY(-1px);
         }
 
         .btn-secondary {
-            background: var(--bg-card);
+            background: var(--bg-glass);
             color: var(--text-primary);
             border: 1px solid var(--border);
             backdrop-filter: var(--blur);
             -webkit-backdrop-filter: var(--blur);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--border-hover);
-            transform: translateY(-1px);
             box-shadow: var(--shadow);
         }
 
+        .btn-secondary:hover {
+            background: var(--bg-glass-strong);
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
         .btn-icon {
-            padding: 0.75rem;
-            width: 48px;
-            height: 48px;
+            padding: 1rem;
+            width: 56px;
+            height: 56px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
+            font-size: 1.3rem;
         }
 
         main {
-            padding: 3rem 0;
-            min-height: calc(100vh - 120px);
+            padding: 8rem 0 4rem;
+            min-height: 100vh;
         }
 
         .main-content {
             display: grid;
-            grid-template-columns: 1fr 400px;
-            gap: 2.5rem;
+            grid-template-columns: 1fr 480px;
+            gap: 3rem;
             align-items: start;
         }
 
+        /* Floating Notes Section */
         .notes-section {
-            background: var(--bg-card);
-            backdrop-filter: var(--blur);
-            -webkit-backdrop-filter: var(--blur);
+            background: var(--bg-glass);
+            backdrop-filter: var(--blur-strong);
+            -webkit-backdrop-filter: var(--blur-strong);
             border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            box-shadow: var(--shadow-lg);
+            border-radius: var(--radius-xl);
+            padding: 3rem;
+            box-shadow: var(--shadow-xl);
             position: relative;
             overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .notes-section::before {
@@ -300,30 +363,40 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.3), transparent);
+            height: 2px;
+            background: var(--accent-gradient);
+            opacity: 0.6;
+        }
+
+        .notes-section:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl), 0 0 40px rgba(99, 102, 241, 0.1);
         }
 
         .section-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
             border-bottom: 1px solid var(--border);
         }
 
         .section-title {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 2rem;
+            font-weight: 800;
             color: var(--text-primary);
-            letter-spacing: -0.025em;
+            letter-spacing: -0.02em;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .stats {
             display: flex;
-            gap: 1rem;
-            font-size: 0.85rem;
+            gap: 2rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
             font-weight: 500;
         }
@@ -331,24 +404,37 @@
         .stat-item {
             display: flex;
             align-items: center;
-            gap: 0.25rem;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            background: var(--bg-glass);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            background: var(--bg-glass-strong);
+            transform: translateY(-2px);
         }
 
         .notes-grid {
             display: grid;
-            gap: 1.25rem;
+            gap: 1.5rem;
         }
 
+        /* Ultra Modern Note Cards */
         .note-card {
-            background: var(--bg-secondary);
+            background: var(--bg-card);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
             border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 1.5rem;
+            border-radius: var(--radius-lg);
+            padding: 2rem;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
-            box-shadow: var(--shadow-sm);
+            box-shadow: var(--shadow);
         }
 
         .note-card::before {
@@ -358,14 +444,27 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: var(--accent);
+            background: var(--accent-gradient);
             transform: scaleX(0);
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .note-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--accent-gradient);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
         }
 
         .note-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-xl);
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: var(--shadow-xl), 0 0 40px rgba(99, 102, 241, 0.15);
             border-color: var(--border-hover);
         }
 
@@ -373,10 +472,15 @@
             transform: scaleX(1);
         }
 
+        .note-card:hover::after {
+            opacity: 0.03;
+        }
+
         .note-card.active {
-            border-color: var(--accent-solid);
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1), var(--shadow-lg);
-            transform: translateY(-2px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1), var(--shadow-xl);
+            transform: translateY(-4px);
+            background: var(--bg-glass-strong);
         }
 
         .note-card.active::before {
@@ -384,30 +488,31 @@
         }
 
         .note-title {
-            font-weight: 600;
-            margin-bottom: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
             color: var(--text-primary);
-            font-size: 1.1rem;
-            line-height: 1.4;
-            letter-spacing: -0.01em;
+            font-size: 1.25rem;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
         }
 
         .note-preview {
             color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.5;
+            font-size: 0.95rem;
+            line-height: 1.6;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
         }
 
         .note-meta {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
             font-weight: 500;
         }
@@ -415,107 +520,139 @@
         .note-date {
             display: flex;
             align-items: center;
-            gap: 0.25rem;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg-glass);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
         }
 
         .note-actions {
             display: flex;
-            gap: 0.5rem;
+            gap: 0.75rem;
             opacity: 0;
-            transition: opacity 0.2s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .note-card:hover .note-actions {
             opacity: 1;
+            transform: translateX(0);
         }
 
         .note-action-btn {
-            padding: 0.25rem;
+            padding: 0.5rem;
             border: none;
-            background: var(--bg-tertiary);
+            background: var(--bg-glass);
             color: var(--text-muted);
-            border-radius: 6px;
+            border-radius: var(--radius);
             cursor: pointer;
-            transition: all 0.2s ease;
-            font-size: 0.9rem;
-            width: 28px;
-            height: 28px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1rem;
+            width: 36px;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
+            border: 1px solid var(--border);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
         }
 
         .note-action-btn:hover {
             background: var(--danger);
             color: white;
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: var(--shadow-lg);
         }
 
+        /* Floating Editor */
         .editor-section {
-            background: var(--bg-card);
-            backdrop-filter: var(--blur);
-            -webkit-backdrop-filter: var(--blur);
+            background: var(--bg-glass);
+            backdrop-filter: var(--blur-strong);
+            -webkit-backdrop-filter: var(--blur-strong);
             border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            box-shadow: var(--shadow-lg);
+            border-radius: var(--radius-xl);
+            padding: 3rem;
+            box-shadow: var(--shadow-xl);
             position: sticky;
-            top: 120px;
+            top: 8rem;
             height: fit-content;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .editor-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent-gradient);
+            opacity: 0.6;
+        }
+
+        .editor-section:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl), 0 0 40px rgba(139, 92, 246, 0.1);
         }
 
         .editor-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
             border-bottom: 1px solid var(--border);
         }
 
         .editor-title {
-            font-size: 1.25rem;
-            font-weight: 600;
+            font-size: 1.5rem;
+            font-weight: 700;
             color: var(--text-primary);
-            letter-spacing: -0.01em;
+            letter-spacing: -0.02em;
         }
 
         .editor-actions {
             display: flex;
-            gap: 0.75rem;
+            gap: 1rem;
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .form-label {
             display: block;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
             font-weight: 600;
             color: var(--text-primary);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             letter-spacing: -0.01em;
         }
 
         .form-input {
             width: 100%;
-            padding: 1rem;
+            padding: 1.25rem 1.5rem;
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            background: var(--bg-secondary);
+            background: var(--bg-glass);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
             color: var(--text-primary);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-family: inherit;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: var(--shadow-sm);
+            font-weight: 500;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow);
         }
 
         .form-input:focus {
             outline: none;
-            border-color: var(--accent-solid);
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1), var(--shadow);
-            transform: translateY(-1px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1), var(--shadow-lg);
+            transform: translateY(-2px);
+            background: var(--bg-glass-strong);
         }
 
         .form-input::placeholder {
@@ -524,47 +661,59 @@
         }
 
         .form-textarea {
-            min-height: 320px;
+            min-height: 400px;
             resize: vertical;
-            line-height: 1.6;
-            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+            line-height: 1.7;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
+            font-size: 0.9rem;
         }
 
         .empty-state {
             text-align: center;
-            padding: 4rem 2rem;
+            padding: 6rem 3rem;
             color: var(--text-muted);
         }
 
         .empty-icon {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            opacity: 0.6;
+            font-size: 5rem;
+            margin-bottom: 2rem;
+            opacity: 0.4;
             display: block;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
 
         .empty-state h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
             color: var(--text-secondary);
+            letter-spacing: -0.02em;
         }
 
         .empty-state p {
-            font-size: 0.9rem;
-            line-height: 1.5;
+            font-size: 1rem;
+            line-height: 1.6;
+            max-width: 400px;
+            margin: 0 auto;
         }
 
         .privacy-info {
-            background: linear-gradient(135deg, rgba(72, 187, 120, 0.1) 0%, rgba(72, 187, 120, 0.05) 100%);
-            border: 1px solid rgba(72, 187, 120, 0.2);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            margin-top: 2rem;
-            font-size: 0.85rem;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin-top: 3rem;
+            font-size: 0.9rem;
             color: var(--text-secondary);
             position: relative;
             overflow: hidden;
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
         }
 
         .privacy-info::before {
@@ -573,92 +722,145 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--success), rgba(72, 187, 120, 0.3));
+            height: 3px;
+            background: linear-gradient(90deg, var(--success), rgba(16, 185, 129, 0.3));
         }
 
         .privacy-info strong {
             color: var(--success);
-            font-weight: 600;
+            font-weight: 700;
         }
 
+        /* Ultra Modern Notifications */
         .notification {
             position: fixed;
             top: 2rem;
             right: 2rem;
-            padding: 1rem 1.5rem;
-            border-radius: var(--radius);
+            padding: 1.5rem 2rem;
+            border-radius: var(--radius-lg);
             color: white;
-            font-weight: 500;
-            font-size: 0.9rem;
-            z-index: 1000;
-            transform: translateX(120%);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 600;
+            font-size: 0.95rem;
+            z-index: 2000;
+            transform: translateX(120%) scale(0.8);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: var(--shadow-xl);
-            backdrop-filter: var(--blur);
-            -webkit-backdrop-filter: var(--blur);
+            backdrop-filter: var(--blur-strong);
+            -webkit-backdrop-filter: var(--blur-strong);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            min-width: 300px;
+            min-width: 350px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .notification::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: notificationShine 2s ease-in-out;
         }
 
         .notification.show {
-            transform: translateX(0);
+            transform: translateX(0) scale(1);
         }
 
         .notification.success {
-            background: linear-gradient(135deg, var(--success) 0%, rgba(72, 187, 120, 0.9) 100%);
+            background: linear-gradient(135deg, var(--success) 0%, rgba(16, 185, 129, 0.9) 100%);
         }
 
         .notification.error {
-            background: linear-gradient(135deg, var(--danger) 0%, rgba(245, 101, 101, 0.9) 100%);
+            background: linear-gradient(135deg, var(--danger) 0%, rgba(239, 68, 68, 0.9) 100%);
         }
 
+        @keyframes notificationShine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* Floating Action Button */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 64px;
+            height: 64px;
+            background: var(--accent-gradient);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-xl);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+            display: none;
+        }
+
+        .fab:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: var(--shadow-xl), var(--shadow-glow);
+        }
+
+        /* Animations */
         .fade-in {
-            animation: fadeInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         @keyframes fadeInUp {
             from { 
                 opacity: 0; 
-                transform: translateY(20px);
+                transform: translateY(30px) scale(0.95);
             }
             to { 
                 opacity: 1; 
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
             }
         }
 
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        /* Scrollbar Styling */
+        /* Scrollbar */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 12px;
         }
 
         ::-webkit-scrollbar-track {
             background: var(--bg-tertiary);
-            border-radius: 4px;
+            border-radius: 6px;
         }
 
         ::-webkit-scrollbar-thumb {
-            background: var(--text-muted);
-            border-radius: 4px;
-            transition: background 0.2s ease;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 6px;
+            transition: all 0.3s ease;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--text-secondary);
+            background: linear-gradient(135deg, var(--accent-secondary), var(--accent-tertiary));
         }
 
         /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .editor-section {
+                position: static;
+            }
+        }
+
         @media (max-width: 768px) {
+            header {
+                top: 1rem;
+                left: 1rem;
+                right: 1rem;
+                padding: 1.25rem 1.5rem;
+            }
+
             .container {
                 padding: 0 1rem;
             }
@@ -672,18 +874,47 @@
                 width: 100%;
             }
 
-            .main-content {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
+            .notes-section,
             .editor-section {
-                position: static;
+                padding: 2rem;
+                border-radius: var(--radius-lg);
             }
 
+            main {
+                padding: 6rem 0 2rem;
+            }
+
+            .fab {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
             .notes-section,
             .editor-section {
                 padding: 1.5rem;
+            }
+
+            .btn {
+                padding: 0.875rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .btn-icon {
+                width: 48px;
+                height: 48px;
+                padding: 0.875rem;
             }
 
             .notification {
@@ -691,39 +922,13 @@
                 left: 1rem;
                 min-width: auto;
             }
-
-            main {
-                padding: 2rem 0;
-            }
         }
 
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 0.75rem;
-            }
-
-            .notes-section,
-            .editor-section {
-                padding: 1rem;
-            }
-
-            .btn {
-                padding: 0.625rem 1.25rem;
-                font-size: 0.85rem;
-            }
-
-            .btn-icon {
-                width: 44px;
-                height: 44px;
-                padding: 0.625rem;
-            }
-        }
-
-        /* Focus visible for accessibility */
+        /* Focus and accessibility */
         .btn:focus-visible,
         .form-input:focus-visible,
         .search-input:focus-visible {
-            outline: 2px solid var(--accent-solid);
+            outline: 2px solid var(--accent-primary);
             outline-offset: 2px;
         }
 
@@ -739,26 +944,24 @@
         }
     </style>
 </head>
-<body>
+<body data-theme="dark">
     <header>
-        <div class="container">
-            <div class="header-content">
-                <a href="#" class="logo">
-                    <div class="logo-icon">🔒</div>
-                    Privacy Notes
-                </a>
-                <div class="header-actions">
-                    <div class="search-box">
-                        <input type="text" class="search-input" placeholder="Search your notes..." id="searchInput">
-                        <span class="search-icon">🔍</span>
-                    </div>
-                    <button class="btn btn-secondary btn-icon" id="themeToggle" title="Toggle theme">
-                        🌙
-                    </button>
-                    <button class="btn btn-primary" id="newNoteBtn">
-                        ✨ New Note
-                    </button>
+        <div class="header-content">
+            <a href="#" class="logo">
+                <div class="logo-icon">🔮</div>
+                Privacy Notes
+            </a>
+            <div class="header-actions">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search your universe of notes..." id="searchInput">
+                    <span class="search-icon">🔍</span>
                 </div>
+                <button class="btn btn-secondary btn-icon" id="themeToggle" title="Toggle theme">
+                    ☀️
+                </button>
+                <button class="btn btn-primary" id="newNoteBtn">
+                    ✨ Create Note
+                </button>
             </div>
         </div>
     </header>
@@ -768,50 +971,50 @@
             <div class="main-content">
                 <div class="notes-section">
                     <div class="section-header">
-                        <h2 class="section-title">Your Notes</h2>
+                        <h2 class="section-title">Your Universe</h2>
                         <div class="stats">
                             <div class="stat-item">
-                                <span>📝</span>
+                                <span>🌟</span>
                                 <span id="noteCount">0 notes</span>
                             </div>
                             <div class="stat-item">
-                                <span>💾</span>
-                                <span id="storageInfo">0 KB used</span>
+                                <span>💎</span>
+                                <span id="storageInfo">0 KB stored</span>
                             </div>
                         </div>
                     </div>
                     <div class="notes-grid" id="notesGrid">
                         <div class="empty-state">
-                            <span class="empty-icon">📝</span>
-                            <h3>No notes yet</h3>
-                            <p>Create your first note to get started with secure, private note-taking</p>
+                            <span class="empty-icon">🌌</span>
+                            <h3>Your creative space awaits</h3>
+                            <p>Begin your journey with your first note. Every great idea starts with a single thought.</p>
                         </div>
                     </div>
                     <div class="privacy-info">
-                        <strong>🔒 100% Private & Secure:</strong> All your notes are stored locally in your browser cookies. Nothing is ever sent to any server or cloud service. Your privacy is guaranteed.
+                        <strong>🛡️ Ultra-Secure & Private:</strong> Your thoughts remain yours alone. All notes are encrypted and stored locally in your browser. Zero cloud storage, zero tracking, zero compromise on your privacy.
                     </div>
                 </div>
 
                 <div class="editor-section">
                     <div class="editor-header">
-                        <h3 class="editor-title" id="editorTitle">✨ New Note</h3>
+                        <h3 class="editor-title" id="editorTitle">✨ New Creation</h3>
                         <div class="editor-actions">
-                            <button class="btn btn-secondary btn-icon" id="clearBtn" title="Clear editor">
+                            <button class="btn btn-secondary btn-icon" id="clearBtn" title="Clear canvas">
                                 🗑️
                             </button>
                             <button class="btn btn-primary" id="saveBtn">
-                                💾 Save Note
+                                💫 Save
                             </button>
                         </div>
                     </div>
                     <form id="noteForm">
                         <div class="form-group">
-                            <label class="form-label" for="noteTitle">Note Title</label>
-                            <input type="text" class="form-input" id="noteTitle" placeholder="Enter a descriptive title..." required>
+                            <label class="form-label" for="noteTitle">Title</label>
+                            <input type="text" class="form-input" id="noteTitle" placeholder="Give your thought a name..." required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="noteContent">Note Content</label>
-                            <textarea class="form-input form-textarea" id="noteContent" placeholder="Start writing your thoughts..." required></textarea>
+                            <label class="form-label" for="noteContent">Content</label>
+                            <textarea class="form-input form-textarea" id="noteContent" placeholder="Let your creativity flow..." required></textarea>
                         </div>
                     </form>
                 </div>
@@ -819,8 +1022,12 @@
         </div>
     </main>
 
+    <button class="fab" id="fabBtn" title="Quick note">
+        ✨
+    </button>
+
     <script>
-        class PrivacyNotes {
+        class UltraModernNotes {
             constructor() {
                 this.notes = this.loadNotes();
                 this.currentNoteId = null;
@@ -834,11 +1041,39 @@
                 this.updateStats();
                 this.loadTheme();
                 this.addKeyboardShortcuts();
+                this.initAnimations();
+            }
+
+            initAnimations() {
+                // Stagger animation for initial load
+                setTimeout(() => {
+                    document.body.style.opacity = '1';
+                    document.body.style.transform = 'translateY(0)';
+                }, 100);
+
+                // Intersection Observer for scroll animations
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                document.querySelectorAll('.note-card').forEach(card => {
+                    observer.observe(card);
+                });
             }
 
             bindEvents() {
                 // New note button
                 document.getElementById('newNoteBtn').addEventListener('click', () => {
+                    this.newNote();
+                });
+
+                // FAB button
+                document.getElementById('fabBtn').addEventListener('click', () => {
                     this.newNote();
                 });
 
@@ -869,25 +1104,35 @@
                     this.saveCurrentNote();
                 });
 
-                // Auto-save on input with debouncing
+                // Enhanced auto-save with visual feedback
                 let saveTimeout;
                 ['noteTitle', 'noteContent'].forEach(id => {
                     document.getElementById(id).addEventListener('input', () => {
                         clearTimeout(saveTimeout);
+                        
+                        // Visual feedback for typing
+                        const element = document.getElementById(id);
+                        element.style.borderColor = 'var(--accent-tertiary)';
+                        
                         saveTimeout = setTimeout(() => {
                             if (this.currentNoteId) {
                                 this.saveCurrentNote(true);
                             }
-                        }, 1500);
+                            element.style.borderColor = 'var(--border)';
+                        }, 2000);
                     });
                 });
 
-                // Enhanced keyboard navigation
-                document.addEventListener('keydown', (e) => {
+                // Smooth scroll behavior
+                document.addEventListener('click', (e) => {
                     if (e.target.closest('.note-card')) {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
-                            e.target.closest('.note-card').click();
+                        if (window.innerWidth <= 1024) {
+                            setTimeout(() => {
+                                document.querySelector('.editor-section').scrollIntoView({ 
+                                    behavior: 'smooth',
+                                    block: 'start'
+                                });
+                            }, 100);
                         }
                     }
                 });
@@ -912,12 +1157,19 @@
                         e.preventDefault();
                         document.getElementById('searchInput').focus();
                     }
+
+                    // Escape to clear search
+                    if (e.key === 'Escape') {
+                        document.getElementById('searchInput').value = '';
+                        this.searchTerm = '';
+                        this.renderNotes();
+                    }
                 });
             }
 
             loadNotes() {
                 try {
-                    const notesData = this.getCookie('privacy_notes');
+                    const notesData = this.getCookie('ultra_privacy_notes');
                     return notesData ? JSON.parse(notesData) : [];
                 } catch (error) {
                     console.error('Error loading notes:', error);
@@ -927,10 +1179,10 @@
 
             saveNotes() {
                 try {
-                    this.setCookie('privacy_notes', JSON.stringify(this.notes), 365);
+                    this.setCookie('ultra_privacy_notes', JSON.stringify(this.notes), 365);
                     this.updateStats();
                 } catch (error) {
-                    this.showNotification('Error saving notes. Storage might be full.', 'error');
+                    this.showNotification('🚨 Storage limit reached. Consider exporting some notes.', 'error');
                     console.error('Error saving notes:', error);
                 }
             }
@@ -955,22 +1207,24 @@
             newNote() {
                 this.currentNoteId = null;
                 this.clearEditor();
-                document.getElementById('editorTitle').textContent = '✨ New Note';
+                document.getElementById('editorTitle').textContent = '✨ New Creation';
                 document.getElementById('noteTitle').focus();
                 
-                // Add subtle animation
+                // Enhanced animation
                 const editor = document.querySelector('.editor-section');
-                editor.style.transform = 'scale(0.98)';
+                editor.style.transform = 'scale(0.95) translateY(10px)';
+                editor.style.opacity = '0.8';
                 setTimeout(() => {
-                    editor.style.transform = 'scale(1)';
-                }, 100);
+                    editor.style.transform = 'scale(1) translateY(0)';
+                    editor.style.opacity = '1';
+                }, 150);
             }
 
             clearEditor() {
                 document.getElementById('noteTitle').value = '';
                 document.getElementById('noteContent').value = '';
                 this.currentNoteId = null;
-                document.getElementById('editorTitle').textContent = '✨ New Note';
+                document.getElementById('editorTitle').textContent = '✨ New Creation';
                 this.updateActiveNote();
             }
 
@@ -980,7 +1234,7 @@
 
                 if (!title || !content) {
                     if (!silent) {
-                        this.showNotification('Please fill in both title and content', 'error');
+                        this.showNotification('🎯 Both title and content are required', 'error');
                     }
                     return;
                 }
@@ -997,13 +1251,11 @@
                 };
 
                 if (this.currentNoteId) {
-                    // Update existing note
                     const index = this.notes.findIndex(n => n.id === this.currentNoteId);
                     if (index !== -1) {
                         this.notes[index] = noteData;
                     }
                 } else {
-                    // Create new note
                     this.notes.unshift(noteData);
                     this.currentNoteId = noteData.id;
                 }
@@ -1013,17 +1265,19 @@
                 this.updateActiveNote();
                 
                 if (!silent) {
-                    this.showNotification('✨ Note saved successfully!', 'success');
+                    this.showNotification('🌟 Note saved to your universe!', 'success');
                     
-                    // Add save animation
+                    // Enhanced save animation
                     const saveBtn = document.getElementById('saveBtn');
-                    saveBtn.style.transform = 'scale(0.95)';
+                    saveBtn.style.transform = 'scale(0.9) rotate(5deg)';
+                    saveBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
                     setTimeout(() => {
-                        saveBtn.style.transform = 'scale(1)';
-                    }, 150);
+                        saveBtn.style.transform = 'scale(1) rotate(0deg)';
+                        saveBtn.style.background = 'var(--accent-gradient)';
+                    }, 200);
                 }
 
-                document.getElementById('editorTitle').textContent = `📝 ${title}`;
+                document.getElementById('editorTitle').textContent = `🌟 ${title}`;
             }
 
             editNote(id) {
@@ -1033,23 +1287,15 @@
                 this.currentNoteId = id;
                 document.getElementById('noteTitle').value = note.title;
                 document.getElementById('noteContent').value = note.content;
-                document.getElementById('editorTitle').textContent = `📝 ${note.title}`;
+                document.getElementById('editorTitle').textContent = `🌟 ${note.title}`;
                 this.updateActiveNote();
-                
-                // Smooth scroll to editor on mobile
-                if (window.innerWidth <= 768) {
-                    document.querySelector('.editor-section').scrollIntoView({ 
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
             }
 
             deleteNote(id) {
                 const note = this.notes.find(n => n.id === id);
                 if (!note) return;
 
-                if (confirm(`Are you sure you want to delete "${note.title}"?`)) {
+                if (confirm(`🗑️ Delete "${note.title}" forever?`)) {
                     this.notes = this.notes.filter(n => n.id !== id);
                     this.saveNotes();
                     this.renderNotes();
@@ -1058,7 +1304,7 @@
                         this.clearEditor();
                     }
                     
-                    this.showNotification('🗑️ Note deleted', 'success');
+                    this.showNotification('🗑️ Note deleted from universe', 'success');
                 }
             }
 
@@ -1071,8 +1317,8 @@
 
                 if (filteredNotes.length === 0) {
                     const emptyMessage = this.searchTerm ? 
-                        { icon: '🔍', title: 'No matching notes', desc: 'Try a different search term' } :
-                        { icon: '📝', title: 'No notes yet', desc: 'Create your first note to get started with secure, private note-taking' };
+                        { icon: '🔍', title: 'No matching notes found', desc: 'Try adjusting your search terms' } :
+                        { icon: '🌌', title: 'Your creative space awaits', desc: 'Begin your journey with your first note. Every great idea starts with a single thought.' };
                     
                     grid.innerHTML = `
                         <div class="empty-state">
@@ -1084,9 +1330,10 @@
                     return;
                 }
 
-                grid.innerHTML = filteredNotes.map(note => `
+                grid.innerHTML = filteredNotes.map((note, index) => `
                     <div class="note-card fade-in ${note.id === this.currentNoteId ? 'active' : ''}" 
                          onclick="app.editNote('${note.id}')"
+                         style="animation-delay: ${index * 0.1}s"
                          tabindex="0"
                          role="button"
                          aria-label="Edit note: ${this.escapeHtml(note.title)}">
@@ -1094,7 +1341,7 @@
                         <div class="note-preview">${this.escapeHtml(note.content)}</div>
                         <div class="note-meta">
                             <div class="note-date">
-                                <span>🕒</span>
+                                <span>⏰</span>
                                 <span>${this.formatDate(note.updatedAt)}</span>
                             </div>
                             <div class="note-actions">
@@ -1130,7 +1377,7 @@
                 document.getElementById('noteCount').textContent = 
                     `${noteCount} ${noteCount === 1 ? 'note' : 'notes'}`;
                 document.getElementById('storageInfo').textContent = 
-                    `${(storageSize / 1024).toFixed(1)} KB used`;
+                    `${(storageSize / 1024).toFixed(1)} KB stored`;
             }
 
             formatDate(dateString) {
@@ -1141,11 +1388,11 @@
                 const diffHours = Math.ceil(diffTime / (1000 * 60 * 60));
                 const diffMinutes = Math.ceil(diffTime / (1000 * 60));
 
+                if (diffMinutes < 2) return 'Just now';
                 if (diffMinutes < 60) return `${diffMinutes}m ago`;
                 if (diffHours < 24) return `${diffHours}h ago`;
-                if (diffDays === 1) return 'Today';
-                if (diffDays === 2) return 'Yesterday';
-                if (diffDays <= 7) return `${diffDays - 1} days ago`;
+                if (diffDays === 1) return 'Yesterday';
+                if (diffDays <= 7) return `${diffDays} days ago`;
                 
                 return date.toLocaleDateString('en-US', { 
                     month: 'short', 
@@ -1173,8 +1420,8 @@
                         if (document.body.contains(notification)) {
                             document.body.removeChild(notification);
                         }
-                    }, 400);
-                }, 3500);
+                    }, 500);
+                }, 4000);
             }
 
             toggleTheme() {
@@ -1186,11 +1433,11 @@
                 
                 this.setCookie('theme', newTheme, 365);
                 
-                // Add theme transition effect
-                document.body.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+                // Enhanced theme transition
+                document.body.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
                 setTimeout(() => {
                     document.body.style.transition = '';
-                }, 300);
+                }, 500);
             }
 
             loadTheme() {
@@ -1201,17 +1448,20 @@
             }
         }
 
-        // Initialize the app
-        const app = new PrivacyNotes();
+        // Initialize the ultra-modern app
+        const app = new UltraModernNotes();
 
-        // Add loading animation
+        // Enhanced loading experience
         document.addEventListener('DOMContentLoaded', () => {
             document.body.style.opacity = '0';
+            document.body.style.transform = 'translateY(20px)';
+            document.body.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+            
             setTimeout(() => {
-                document.body.style.transition = 'opacity 0.5s ease';
                 document.body.style.opacity = '1';
-            }, 100);
+                document.body.style.transform = 'translateY(0)';
+            }, 200);
         });
     </script>
 </body>
-    </html>
+</html>
