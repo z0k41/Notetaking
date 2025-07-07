@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Notes - Secure Local Note Taking</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #f1f5f9;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --border: #e2e8f0;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --success: #10b981;
+            --danger: #ef4444;
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #64748b;
+            --border: #334155;
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.3), 0 1px 2px -1px rgb(0 0 0 / 0.3);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        header {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-input {
+            padding: 0.5rem 1rem 0.5rem 2.5rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            width: 250px;
+            transition: all 0.2s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgb(59 130 246 / 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--border);
+        }
+
+        .btn-icon {
+            padding: 0.5rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        main {
+            padding: 2rem 0;
+            min-height: calc(100vh - 80px);
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .notes-section {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .notes-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .note-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .note-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent);
+        }
+
+        .note-card.active {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgb(59 130 246 / 0.1);
+        }
+
+        .note-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .note-preview {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .note-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .note-actions {
+            display: flex;
+            gap: 0.5rem;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .note-card:hover .note-actions {
+            opacity: 1;
+        }
+
+        .editor-section {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 100px;
+        }
+
+        .editor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .editor-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .editor-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgb(59 130 246 / 0.1);
+        }
+
+        .form-textarea {
+            min-height: 300px;
+            resize: vertical;
+            font-family: inherit;
+            line-height: 1.6;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-muted);
+        }
+
+        .empty-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .privacy-info {
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .privacy-info strong {
+            color: var(--success);
+        }
+
+        .stats {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .search-input {
+                width: 100%;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .editor-section {
+                position: static;
+            }
+
+            .container {
+                padding: 0 0.5rem;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            color: white;
+            font-weight: 500;
+            z-index: 1000;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            background: var(--success);
+        }
+
+        .notification.error {
+            background: var(--danger);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">🔒</div>
+                    Privacy Notes
+                </div>
+                <div class="header-actions">
+                    <div class="search-box">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" class="search-input" placeholder="Search notes..." id="searchInput">
+                    </div>
+                    <button class="btn btn-secondary btn-icon" id="themeToggle" title="Toggle theme">
+                        🌙
+                    </button>
+                    <button class="btn btn-primary" id="newNoteBtn">
+                        ➕ New Note
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="main-content">
+                <div class="notes-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Your Notes</h2>
+                        <div class="stats">
+                            <span id="noteCount">0 notes</span>
+                            <span>•</span>
+                            <span id="storageInfo">0 KB used</span>
+                        </div>
+                    </div>
+                    <div class="notes-grid" id="notesGrid">
+                        <div class="empty-state">
+                            <div class="empty-icon">📝</div>
+                            <h3>No notes yet</h3>
+                            <p>Create your first note to get started</p>
+                        </div>
+                    </div>
+                    <div class="privacy-info">
+                        <strong>🔒 100% Private:</strong> All your notes are stored locally in your browser cookies. Nothing is sent to any server or cloud service.
+                    </div>
+                </div>
+
+                <div class="editor-section">
+                    <div class="editor-header">
+                        <h3 class="editor-title" id="editorTitle">New Note</h3>
+                        <div class="editor-actions">
+                            <button class="btn btn-secondary btn-icon" id="clearBtn" title="Clear">
+                                🗑️
+                            </button>
+                            <button class="btn btn-primary" id="saveBtn">
+                                💾 Save
+                            </button>
+                        </div>
+                    </div>
+                    <form id="noteForm">
+                        <div class="form-group">
+                            <label class="form-label" for="noteTitle">Title</label>
+                            <input type="text" class="form-input" id="noteTitle" placeholder="Enter note title..." required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="noteContent">Content</label>
+                            <textarea class="form-input form-textarea" id="noteContent" placeholder="Start writing your note..." required></textarea>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        class PrivacyNotes {
+            constructor() {
+                this.notes = this.loadNotes();
+                this.currentNoteId = null;
+                this.searchTerm = '';
+                this.init();
+            }
+
+            init() {
+                this.bindEvents();
+                this.renderNotes();
+                this.updateStats();
+                this.loadTheme();
+            }
+
+            bindEvents() {
+                // New note button
+                document.getElementById('newNoteBtn').addEventListener('click', () => {
+                    this.newNote();
+                });
+
+                // Save button
+                document.getElementById('saveBtn').addEventListener('click', () => {
+                    this.saveCurrentNote();
+                });
+
+                // Clear button
+                document.getElementById('clearBtn').addEventListener('click', () => {
+                    this.clearEditor();
+                });
+
+                // Search input
+                document.getElementById('searchInput').addEventListener('input', (e) => {
+                    this.searchTerm = e.target.value.toLowerCase();
+                    this.renderNotes();
+                });
+
+                // Theme toggle
+                document.getElementById('themeToggle').addEventListener('click', () => {
+                    this.toggleTheme();
+                });
+
+                // Form submission
+                document.getElementById('noteForm').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.saveCurrentNote();
+                });
+
+                // Auto-save on input
+                let saveTimeout;
+                ['noteTitle', 'noteContent'].forEach(id => {
+                    document.getElementById(id).addEventListener('input', () => {
+                        clearTimeout(saveTimeout);
+                        saveTimeout = setTimeout(() => {
+                            if (this.currentNoteId) {
+                                this.saveCurrentNote(true);
+                            }
+                        }, 1000);
+                    });
+                });
+            }
+
+            loadNotes() {
+                try {
+                    const notesData = this.getCookie('privacy_notes');
+                    return notesData ? JSON.parse(notesData) : [];
+                } catch (error) {
+                    console.error('Error loading notes:', error);
+                    return [];
+                }
+            }
+
+            saveNotes() {
+                try {
+                    this.setCookie('privacy_notes', JSON.stringify(this.notes), 365);
+                    this.updateStats();
+                } catch (error) {
+                    this.showNotification('Error saving notes. Storage might be full.', 'error');
+                    console.error('Error saving notes:', error);
+                }
+            }
+
+            getCookie(name) {
+                const value = `; ${document.cookie}`;
+                const parts = value.split(`; ${name}=`);
+                if (parts.length === 2) return parts.pop().split(';').shift();
+                return null;
+            }
+
+            setCookie(name, value, days) {
+                const expires = new Date();
+                expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+                document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/;SameSite=Strict`;
+            }
+
+            generateId() {
+                return Date.now().toString(36) + Math.random().toString(36).substr(2);
+            }
+
+            newNote() {
+                this.currentNoteId = null;
+                this.clearEditor();
+                document.getElementById('editorTitle').textContent = 'New Note';
+                document.getElementById('noteTitle').focus();
+            }
+
+            clearEditor() {
+                document.getElementById('noteTitle').value = '';
+                document.getElementById('noteContent').value = '';
+                this.currentNoteId = null;
+                document.getElementById('editorTitle').textContent = 'New Note';
+                this.updateActiveNote();
+            }
+
+            saveCurrentNote(silent = false) {
+                const title = document.getElementById('noteTitle').value.trim();
+                const content = document.getElementById('noteContent').value.trim();
+
+                if (!title || !content) {
+                    if (!silent) {
+                        this.showNotification('Please fill in both title and content', 'error');
+                    }
+                    return;
+                }
+
+                const now = new Date();
+                const noteData = {
+                    id: this.currentNoteId || this.generateId(),
+                    title,
+                    content,
+                    createdAt: this.currentNoteId ? 
+                        this.notes.find(n => n.id === this.currentNoteId)?.createdAt || now.toISOString() : 
+                        now.toISOString(),
+                    updatedAt: now.toISOString()
+                };
+
+                if (this.currentNoteId) {
+                    // Update existing note
+                    const index = this.notes.findIndex(n => n.id === this.currentNoteId);
+                    if (index !== -1) {
+                        this.notes[index] = noteData;
+                    }
+                } else {
+                    // Create new note
+                    this.notes.unshift(noteData);
+                    this.currentNoteId = noteData.id;
+                }
+
+                this.saveNotes();
+                this.renderNotes();
+                this.updateActiveNote();
+                
+                if (!silent) {
+                    this.showNotification('Note saved successfully!', 'success');
+                }
+
+                document.getElementById('editorTitle').textContent = title;
+            }
+
+            editNote(id) {
+                const note = this.notes.find(n => n.id === id);
+                if (!note) return;
+
+                this.currentNoteId = id;
+                document.getElementById('noteTitle').value = note.title;
+                document.getElementById('noteContent').value = note.content;
+                document.getElementById('editorTitle').textContent = note.title;
+                this.updateActiveNote();
+            }
+
+            deleteNote(id) {
+                if (confirm('Are you sure you want to delete this note?')) {
+                    this.notes = this.notes.filter(n => n.id !== id);
+                    this.saveNotes();
+                    this.renderNotes();
+                    
+                    if (this.currentNoteId === id) {
+                        this.clearEditor();
+                    }
+                    
+                    this.showNotification('Note deleted', 'success');
+                }
+            }
+
+            renderNotes() {
+                const grid = document.getElementById('notesGrid');
+                const filteredNotes = this.notes.filter(note => 
+                    note.title.toLowerCase().includes(this.searchTerm) ||
+                    note.content.toLowerCase().includes(this.searchTerm)
+                );
+
+                if (filteredNotes.length === 0) {
+                    grid.innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-icon">📝</div>
+                            <h3>${this.searchTerm ? 'No matching notes' : 'No notes yet'}</h3>
+                            <p>${this.searchTerm ? 'Try a different search term' : 'Create your first note to get started'}</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                grid.innerHTML = filteredNotes.map(note => `
+                    <div class="note-card fade-in ${note.id === this.currentNoteId ? 'active' : ''}" 
+                         onclick="app.editNote('${note.id}')">
+                        <div class="note-title">${this.escapeHtml(note.title)}</div>
+                        <div class="note-preview">${this.escapeHtml(note.content)}</div>
+                        <div class="note-meta">
+                            <span>${this.formatDate(note.updatedAt)}</span>
+                            <div class="note-actions">
+                                <button class="btn btn-secondary btn-icon" 
+                                        onclick="event.stopPropagation(); app.deleteNote('${note.id}')" 
+                                        title="Delete note">
+                                    🗑️
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            updateActiveNote() {
+                document.querySelectorAll('.note-card').forEach(card => {
+                    card.classList.remove('active');
+                });
+                
+                if (this.currentNoteId) {
+                    const activeCard = document.querySelector(`[onclick="app.editNote('${this.currentNoteId}')"]`);
+                    if (activeCard) {
+                        activeCard.classList.add('active');
+                    }
+                }
+            }
+
+            updateStats() {
+                const noteCount = this.notes.length;
+                const storageSize = new Blob([JSON.stringify(this.notes)]).size;
+                
+                document.getElementById('noteCount').textContent = 
+                    `${noteCount} ${noteCount === 1 ? 'note' : 'notes'}`;
+                document.getElementById('storageInfo').textContent = 
+                    `${(storageSize / 1024).toFixed(1)} KB used`;
+            }
+
+            formatDate(dateString) {
+                const date = new Date(dateString);
+                const now = new Date();
+                const diffTime = Math.abs(now - date);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+                if (diffDays === 1) return 'Today';
+                if (diffDays === 2) return 'Yesterday';
+                if (diffDays <= 7) return `${diffDays - 1} days ago`;
+                
+                return date.toLocaleDateString();
+            }
+
+            escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+
+            showNotification(message, type = 'success') {
+                const notification = document.createElement('div');
+                notification.className = `notification ${type}`;
+                notification.textContent = message;
+                document.body.appendChild(notification);
+
+                setTimeout(() => notification.classList.add('show'), 100);
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                    setTimeout(() => document.body.removeChild(notification), 300);
+                }, 3000);
+            }
+
+            toggleTheme() {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                document.getElementById('themeToggle').textContent = newTheme === 'dark' ? '☀️' : '🌙';
+                
+                this.setCookie('theme', newTheme, 365);
+            }
+
+            loadTheme() {
+                const savedTheme = this.getCookie('theme') || 'light';
+                document.documentElement.setAttribute('data-theme', savedTheme);
+                document.getElementById('themeToggle').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+            }
+        }
+
+        // Initialize the app
+        const app = new PrivacyNotes();
+    </script>
+</body>
+</html>
