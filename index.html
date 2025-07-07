@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Notes - Ultra Fast & Modern</title>
+    <title>Mindly - Ultra Fast & Modern Note Taking</title>
     <style>
         /* Critical CSS - Inlined for fastest loading */
         *{margin:0;padding:0;box-sizing:border-box}
@@ -525,16 +525,16 @@
     <header>
         <div class="header-content">
             <a href="#" class="logo">
-                <div class="logo-icon">🔮</div>
-                Privacy Notes
+                <div class="logo-icon">🧠</div>
+                Mindly
             </a>
             <div class="header-actions">
                 <div class="search-container">
-                    <input type="text" class="search-input" placeholder="Search notes..." id="searchInput">
+                    <input type="text" class="search-input" placeholder="Search your thoughts..." id="searchInput">
                     <span class="search-icon">🔍</span>
                 </div>
                 <button class="btn btn-secondary btn-icon" id="themeToggle" title="Toggle theme">☀️</button>
-                <button class="btn btn-primary" id="newNoteBtn">✨ New Note</button>
+                <button class="btn btn-primary" id="newNoteBtn">✨ New Thought</button>
             </div>
         </div>
     </header>
@@ -544,33 +544,33 @@
             <div class="main-content">
                 <div class="section">
                     <div class="section-header">
-                        <h2 class="section-title">Your Notes</h2>
+                        <h2 class="section-title">Your Mind</h2>
                         <div class="stats">
                             <div class="stat-item">
-                                <span>📝</span>
-                                <span id="noteCount">0 notes</span>
+                                <span>💭</span>
+                                <span id="noteCount">0 thoughts</span>
                             </div>
                             <div class="stat-item">
-                                <span>💾</span>
+                                <span>🧠</span>
                                 <span id="storageInfo">0 KB</span>
                             </div>
                         </div>
                     </div>
                     <div class="notes-grid" id="notesGrid">
                         <div class="empty-state">
-                            <span class="empty-icon">📝</span>
-                            <h3>No notes yet</h3>
-                            <p>Create your first note to get started</p>
+                            <span class="empty-icon">🧠</span>
+                            <h3>Your mind is ready</h3>
+                            <p>Capture your first thought and let your ideas flow</p>
                         </div>
                     </div>
                     <div class="privacy-info">
-                        <strong>🔒 100% Private:</strong> All notes stored locally in browser cookies. Zero cloud storage.
+                        <strong>🔒 100% Private:</strong> All thoughts stored locally in your browser. Zero cloud storage, zero tracking. Your mind stays yours.
                     </div>
                 </div>
 
                 <div class="section">
                     <div class="section-header">
-                        <h3 id="editorTitle">✨ New Note</h3>
+                        <h3 id="editorTitle">✨ New Thought</h3>
                         <div class="header-actions">
                             <button class="btn btn-secondary btn-icon" id="clearBtn" title="Clear">🗑️</button>
                             <button class="btn btn-primary" id="saveBtn">💾 Save</button>
@@ -579,11 +579,11 @@
                     <form id="noteForm">
                         <div class="form-group">
                             <label class="form-label" for="noteTitle">Title</label>
-                            <input type="text" class="form-input" id="noteTitle" placeholder="Enter title..." required>
+                            <input type="text" class="form-input" id="noteTitle" placeholder="What's on your mind?" required>
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="noteContent">Content</label>
-                            <textarea class="form-input form-textarea" id="noteContent" placeholder="Start writing..." required></textarea>
+                            <textarea class="form-input form-textarea" id="noteContent" placeholder="Let your thoughts flow..." required></textarea>
                         </div>
                     </form>
                 </div>
@@ -592,8 +592,8 @@
     </main>
 
     <script>
-        // Optimized Notes App with performance focus
-        class FastNotes {
+        // Mindly - Ultra-fast note-taking app
+        class Mindly {
             constructor() {
                 // Cache DOM elements for performance
                 this.elements = {
@@ -703,17 +703,17 @@
 
             loadNotes() {
                 try {
-                    const data = this.getCookie('fast_notes');
+                    const data = this.getCookie('mindly_thoughts');
                     return data ? JSON.parse(data) : [];
                 } catch (error) {
-                    console.error('Error loading notes:', error);
+                    console.error('Error loading thoughts:', error);
                     return [];
                 }
             }
 
             saveNotes() {
                 try {
-                    this.setCookie('fast_notes', JSON.stringify(this.notes), 365);
+                    this.setCookie('mindly_thoughts', JSON.stringify(this.notes), 365);
                     this.updateStats();
                 } catch (error) {
                     this.showNotification('Storage error', 'error');
@@ -739,7 +739,7 @@
             newNote() {
                 this.currentNoteId = null;
                 this.clearEditor();
-                this.elements.editorTitle.textContent = '✨ New Note';
+                this.elements.editorTitle.textContent = '✨ New Thought';
                 this.elements.noteTitle.focus();
             }
 
@@ -747,7 +747,7 @@
                 this.elements.noteTitle.value = '';
                 this.elements.noteContent.value = '';
                 this.currentNoteId = null;
-                this.elements.editorTitle.textContent = '✨ New Note';
+                this.elements.editorTitle.textContent = '✨ New Thought';
                 this.updateActiveNote();
             }
 
@@ -783,8 +783,8 @@
                 this.renderNotes();
                 this.updateActiveNote();
                 
-                if (!silent) this.showNotification('Note saved!', 'success');
-                this.elements.editorTitle.textContent = `📝 ${title}`;
+                if (!silent) this.showNotification('Thought saved!', 'success');
+                this.elements.editorTitle.textContent = `💭 ${title}`;
             }
 
             editNote(id) {
@@ -794,7 +794,7 @@
                 this.currentNoteId = id;
                 this.elements.noteTitle.value = note.title;
                 this.elements.noteContent.value = note.content;
-                this.elements.editorTitle.textContent = `📝 ${note.title}`;
+                this.elements.editorTitle.textContent = `💭 ${note.title}`;
                 this.updateActiveNote();
             }
 
@@ -807,7 +807,7 @@
                 this.renderNotes();
                 
                 if (this.currentNoteId === id) this.clearEditor();
-                this.showNotification('Note deleted', 'success');
+                this.showNotification('Thought deleted', 'success');
             }
 
             renderNotes() {
@@ -819,9 +819,9 @@
                 if (filteredNotes.length === 0) {
                     this.elements.notesGrid.innerHTML = `
                         <div class="empty-state">
-                            <span class="empty-icon">${this.searchTerm ? '🔍' : '📝'}</span>
-                            <h3>${this.searchTerm ? 'No matches' : 'No notes yet'}</h3>
-                            <p>${this.searchTerm ? 'Try different keywords' : 'Create your first note'}</p>
+                            <span class="empty-icon">${this.searchTerm ? '🔍' : '🧠'}</span>
+                            <h3>${this.searchTerm ? 'No matching thoughts' : 'Your mind is ready'}</h3>
+                            <p>${this.searchTerm ? 'Try different keywords' : 'Capture your first thought and let your ideas flow'}</p>
                         </div>
                     `;
                     return;
@@ -862,7 +862,7 @@
                 const count = this.notes.length;
                 const size = new Blob([JSON.stringify(this.notes)]).size;
                 
-                this.elements.noteCount.textContent = `${count} note${count !== 1 ? 's' : ''}`;
+                this.elements.noteCount.textContent = `${count} thought${count !== 1 ? 's' : ''}`;
                 this.elements.storageInfo.textContent = `${(size / 1024).toFixed(1)} KB`;
             }
 
@@ -915,22 +915,22 @@
                 
                 document.documentElement.setAttribute('data-theme', newTheme);
                 this.elements.themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
-                this.setCookie('theme', newTheme, 365);
+                this.setCookie('mindly_theme', newTheme, 365);
             }
 
             loadTheme() {
-                const saved = this.getCookie('theme') || 
+                const saved = this.getCookie('mindly_theme') || 
                     (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
                 document.documentElement.setAttribute('data-theme', saved);
                 this.elements.themeToggle.textContent = saved === 'dark' ? '☀️' : '🌙';
             }
         }
 
-        // Initialize app when DOM is ready
+        // Initialize Mindly when DOM is ready
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => new FastNotes());
+            document.addEventListener('DOMContentLoaded', () => new Mindly());
         } else {
-            new FastNotes();
+            new Mindly();
         }
     </script>
 </body>
