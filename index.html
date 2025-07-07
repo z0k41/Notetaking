@@ -3,202 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Notes - Ultra Modern Note Taking</title>
+    <title>Privacy Notes - Ultra Fast & Modern</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        /* Critical CSS - Inlined for fastest loading */
+        *{margin:0;padding:0;box-sizing:border-box}
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         :root {
-            --bg-primary: #0a0a0f;
-            --bg-secondary: #111118;
-            --bg-tertiary: #1a1a24;
-            --bg-card: rgba(26, 26, 36, 0.6);
-            --bg-glass: rgba(255, 255, 255, 0.03);
-            --bg-glass-strong: rgba(255, 255, 255, 0.08);
-            --text-primary: #ffffff;
-            --text-secondary: #a0a0ab;
-            --text-muted: #6b6b76;
-            --accent-primary: #6366f1;
-            --accent-secondary: #8b5cf6;
-            --accent-tertiary: #06b6d4;
-            --accent-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
-            --accent-gradient-hover: linear-gradient(135deg, #5855eb 0%, #7c3aed 50%, #0891b2 100%);
+            --bg-1: #0a0a0f;
+            --bg-2: #111118;
+            --bg-3: #1a1a24;
+            --glass: rgba(255,255,255,0.05);
+            --glass-strong: rgba(255,255,255,0.1);
+            --text-1: #ffffff;
+            --text-2: #a0a0ab;
+            --text-3: #6b6b76;
+            --accent: #6366f1;
+            --accent-2: #8b5cf6;
             --success: #10b981;
-            --warning: #f59e0b;
             --danger: #ef4444;
-            --border: rgba(255, 255, 255, 0.08);
-            --border-hover: rgba(255, 255, 255, 0.16);
-            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-            --shadow: 0 4px 8px rgba(0, 0, 0, 0.4), 0 2px 4px rgba(0, 0, 0, 0.2);
-            --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.3);
-            --shadow-xl: 0 16px 32px rgba(0, 0, 0, 0.6), 0 8px 16px rgba(0, 0, 0, 0.4);
-            --shadow-glow: 0 0 20px rgba(99, 102, 241, 0.3);
-            --blur: blur(24px);
-            --blur-strong: blur(40px);
-            --radius: 20px;
-            --radius-lg: 32px;
-            --radius-xl: 48px;
+            --border: rgba(255,255,255,0.08);
+            --shadow: 0 4px 8px rgba(0,0,0,0.4);
+            --shadow-lg: 0 8px 16px rgba(0,0,0,0.5);
+            --blur: blur(20px);
+            --radius: 16px;
+            --radius-lg: 24px;
         }
 
         [data-theme="light"] {
-            --bg-primary: #fafbff;
-            --bg-secondary: #ffffff;
-            --bg-tertiary: #f8fafc;
-            --bg-card: rgba(255, 255, 255, 0.8);
-            --bg-glass: rgba(255, 255, 255, 0.4);
-            --bg-glass-strong: rgba(255, 255, 255, 0.7);
-            --text-primary: #0f172a;
-            --text-secondary: #475569;
-            --text-muted: #94a3b8;
-            --border: rgba(0, 0, 0, 0.06);
-            --border-hover: rgba(0, 0, 0, 0.12);
-            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-            --shadow: 0 4px 8px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
-            --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
-            --shadow-xl: 0 16px 32px rgba(0, 0, 0, 0.16), 0 8px 16px rgba(0, 0, 0, 0.08);
-            --shadow-glow: 0 0 20px rgba(99, 102, 241, 0.2);
+            --bg-1: #fafbff;
+            --bg-2: #ffffff;
+            --bg-3: #f8fafc;
+            --glass: rgba(255,255,255,0.6);
+            --glass-strong: rgba(255,255,255,0.8);
+            --text-1: #0f172a;
+            --text-2: #475569;
+            --text-3: #94a3b8;
+            --border: rgba(0,0,0,0.08);
+            --shadow: 0 4px 8px rgba(0,0,0,0.1);
+            --shadow-lg: 0 8px 16px rgba(0,0,0,0.15);
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
+            font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+            background: var(--bg-1);
+            color: var(--text-1);
             line-height: 1.6;
-            font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
             overflow-x: hidden;
-            position: relative;
+            contain: layout style paint;
         }
 
-        /* Animated Background */
+        /* Optimized background with single pseudo-element */
         body::before {
             content: '';
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 40% 60%, rgba(6, 182, 212, 0.1) 0%, transparent 40%);
-            animation: backgroundShift 20s ease-in-out infinite;
-            pointer-events: none;
-            z-index: -2;
-        }
-
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                linear-gradient(45deg, transparent 30%, rgba(99, 102, 241, 0.02) 50%, transparent 70%),
-                linear-gradient(-45deg, transparent 30%, rgba(139, 92, 246, 0.02) 50%, transparent 70%);
-            animation: meshMove 15s linear infinite;
+            inset: 0;
+            background: radial-gradient(circle at 20% 20%, rgba(99,102,241,0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(139,92,246,0.1) 0%, transparent 50%);
             pointer-events: none;
             z-index: -1;
+            will-change: transform;
+            animation: bg-shift 20s ease-in-out infinite;
         }
 
-        @keyframes backgroundShift {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            33% { transform: scale(1.1) rotate(1deg); }
-            66% { transform: scale(0.9) rotate(-1deg); }
+        @keyframes bg-shift {
+            0%,100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
-        @keyframes meshMove {
-            0% { transform: translateX(-100px) translateY(-100px); }
-            100% { transform: translateX(100px) translateY(100px); }
-        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 1.5rem; }
 
-        .container {
-            max-width: 1600px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Floating Header */
+        /* Optimized header */
         header {
             position: fixed;
-            top: 2rem;
-            left: 2rem;
-            right: 2rem;
-            background: var(--bg-glass-strong);
-            backdrop-filter: var(--blur-strong);
-            -webkit-backdrop-filter: var(--blur-strong);
+            top: 1rem;
+            left: 1rem;
+            right: 1rem;
+            background: var(--glass-strong);
+            backdrop-filter: var(--blur);
             border: 1px solid var(--border);
             border-radius: var(--radius-lg);
-            padding: 1.5rem 2rem;
-            z-index: 1000;
-            box-shadow: var(--shadow-xl);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 1.25rem 1.5rem;
+            z-index: 100;
+            box-shadow: var(--shadow-lg);
+            will-change: transform;
+            transition: transform 0.2s ease;
         }
 
-        header:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-xl), var(--shadow-glow);
-        }
+        header:hover { transform: translateY(-1px); }
 
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 2rem;
+            gap: 1.5rem;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--text-primary);
+            gap: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-1);
             text-decoration: none;
-            position: relative;
         }
 
         .logo-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--accent-gradient);
-            border-radius: var(--radius);
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.5rem;
-            box-shadow: var(--shadow-lg);
-            position: relative;
-            overflow: hidden;
-            animation: logoFloat 6s ease-in-out infinite;
+            font-size: 1.2rem;
+            will-change: transform;
+            transition: transform 0.2s ease;
         }
 
-        .logo-icon::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
-            animation: logoShine 3s linear infinite;
-        }
-
-        @keyframes logoFloat {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-4px) rotate(2deg); }
-        }
-
-        @keyframes logoShine {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-        }
+        .logo-icon:hover { transform: scale(1.05); }
 
         .header-actions {
             display: flex;
@@ -206,188 +130,123 @@
             gap: 1rem;
         }
 
-        .search-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: var(--radius);
-        }
-
         .search-input {
-            padding: 1rem 1.5rem 1rem 3.5rem;
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            background: var(--bg-glass);
+            background: var(--glass);
             backdrop-filter: var(--blur);
-            -webkit-backdrop-filter: var(--blur);
-            color: var(--text-primary);
-            font-size: 0.95rem;
-            font-weight: 500;
-            width: 320px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: var(--shadow);
+            color: var(--text-1);
+            font-size: 0.9rem;
+            width: 280px;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+            will-change: transform;
         }
 
         .search-input:focus {
             outline: none;
-            border-color: var(--accent-primary);
-            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1), var(--shadow-lg);
-            transform: translateY(-2px);
-            background: var(--bg-glass-strong);
+            border-color: var(--accent);
+            transform: translateY(-1px);
         }
 
-        .search-input::placeholder {
-            color: var(--text-muted);
-            font-weight: 400;
+        .search-container {
+            position: relative;
         }
 
         .search-icon {
             position: absolute;
-            left: 1.25rem;
+            left: 0.75rem;
             top: 50%;
             transform: translateY(-50%);
-            color: var(--text-muted);
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-        }
-
-        .search-input:focus + .search-icon {
-            color: var(--accent-primary);
-            transform: translateY(-50%) scale(1.1);
+            color: var(--text-3);
+            pointer-events: none;
         }
 
         .btn {
-            padding: 1rem 2rem;
+            padding: 0.75rem 1.25rem;
             border: none;
             border-radius: var(--radius);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2s ease;
             display: inline-flex;
             align-items: center;
-            gap: 0.75rem;
-            text-decoration: none;
-            position: relative;
-            overflow: hidden;
+            gap: 0.5rem;
             font-family: inherit;
-            letter-spacing: -0.01em;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .btn:hover::before {
-            left: 100%;
+            will-change: transform;
         }
 
         .btn-primary {
-            background: var(--accent-gradient);
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
             color: white;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid transparent;
-        }
-
-        .btn-primary:hover {
-            background: var(--accent-gradient-hover);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-xl), var(--shadow-glow);
-        }
-
-        .btn-primary:active {
-            transform: translateY(-1px);
-        }
-
-        .btn-secondary {
-            background: var(--bg-glass);
-            color: var(--text-primary);
-            border: 1px solid var(--border);
-            backdrop-filter: var(--blur);
-            -webkit-backdrop-filter: var(--blur);
             box-shadow: var(--shadow);
         }
 
-        .btn-secondary:hover {
-            background: var(--bg-glass-strong);
-            border-color: var(--border-hover);
+        .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: var(--shadow-lg);
         }
 
+        .btn-secondary {
+            background: var(--glass);
+            color: var(--text-1);
+            border: 1px solid var(--border);
+            backdrop-filter: var(--blur);
+        }
+
+        .btn-secondary:hover {
+            background: var(--glass-strong);
+            transform: translateY(-1px);
+        }
+
         .btn-icon {
-            padding: 1rem;
-            width: 56px;
-            height: 56px;
-            display: flex;
-            align-items: center;
+            padding: 0.75rem;
+            width: 48px;
+            height: 48px;
             justify-content: center;
-            font-size: 1.3rem;
         }
 
         main {
-            padding: 8rem 0 4rem;
+            padding: 6rem 0 2rem;
             min-height: 100vh;
         }
 
         .main-content {
             display: grid;
-            grid-template-columns: 1fr 480px;
-            gap: 3rem;
+            grid-template-columns: 1fr 400px;
+            gap: 2rem;
             align-items: start;
         }
 
-        /* Floating Notes Section */
-        .notes-section {
-            background: var(--bg-glass);
-            backdrop-filter: var(--blur-strong);
-            -webkit-backdrop-filter: var(--blur-strong);
+        /* Optimized sections */
+        .section {
+            background: var(--glass);
+            backdrop-filter: var(--blur);
             border: 1px solid var(--border);
-            border-radius: var(--radius-xl);
-            padding: 3rem;
-            box-shadow: var(--shadow-xl);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+            will-change: transform;
+            transition: transform 0.3s ease;
+            contain: layout style paint;
         }
 
-        .notes-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--accent-gradient);
-            opacity: 0.6;
-        }
-
-        .notes-section:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-xl), 0 0 40px rgba(99, 102, 241, 0.1);
-        }
+        .section:hover { transform: translateY(-2px); }
 
         .section-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
             border-bottom: 1px solid var(--border);
         }
 
         .section-title {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--text-primary);
-            letter-spacing: -0.02em;
-            background: var(--accent-gradient);
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -395,46 +254,37 @@
 
         .stats {
             display: flex;
-            gap: 2rem;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            font-weight: 500;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-3);
         }
 
         .stat-item {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.25rem;
-            background: var(--bg-glass);
+            gap: 0.25rem;
+            padding: 0.5rem 0.75rem;
+            background: var(--glass);
             border-radius: var(--radius);
             border: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-
-        .stat-item:hover {
-            background: var(--bg-glass-strong);
-            transform: translateY(-2px);
         }
 
         .notes-grid {
             display: grid;
-            gap: 1.5rem;
+            gap: 1rem;
         }
 
-        /* Ultra Modern Note Cards */
+        /* Highly optimized note cards */
         .note-card {
-            background: var(--bg-card);
-            backdrop-filter: var(--blur);
-            -webkit-backdrop-filter: var(--blur);
+            background: var(--glass);
             border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 2rem;
+            border-radius: var(--radius);
+            padding: 1.5rem;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2s ease;
+            will-change: transform;
+            contain: layout style paint;
             position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow);
         }
 
         .note-card::before {
@@ -443,44 +293,24 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 3px;
-            background: var(--accent-gradient);
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
             transform: scaleX(0);
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .note-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--accent-gradient);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: -1;
+            transition: transform 0.2s ease;
         }
 
         .note-card:hover {
-            transform: translateY(-6px) scale(1.02);
-            box-shadow: var(--shadow-xl), 0 0 40px rgba(99, 102, 241, 0.15);
-            border-color: var(--border-hover);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
         }
 
         .note-card:hover::before {
             transform: scaleX(1);
         }
 
-        .note-card:hover::after {
-            opacity: 0.03;
-        }
-
         .note-card.active {
-            border-color: var(--accent-primary);
-            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1), var(--shadow-xl);
-            transform: translateY(-4px);
-            background: var(--bg-glass-strong);
+            border-color: var(--accent);
+            transform: translateY(-2px);
         }
 
         .note-card.active::before {
@@ -488,455 +318,202 @@
         }
 
         .note-title {
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-            font-size: 1.25rem;
-            line-height: 1.3;
-            letter-spacing: -0.02em;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-1);
+            font-size: 1.1rem;
         }
 
         .note-preview {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
+            color: var(--text-2);
+            font-size: 0.9rem;
+            line-height: 1.5;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
-            margin-bottom: 1.5rem;
-            font-weight: 400;
+            margin-bottom: 1rem;
         }
 
         .note-meta {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        .note-date {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: var(--bg-glass);
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
+            font-size: 0.8rem;
+            color: var(--text-3);
         }
 
         .note-actions {
-            display: flex;
-            gap: 0.75rem;
             opacity: 0;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: opacity 0.2s ease;
         }
 
         .note-card:hover .note-actions {
             opacity: 1;
-            transform: translateX(0);
         }
 
         .note-action-btn {
-            padding: 0.5rem;
+            padding: 0.25rem;
             border: none;
-            background: var(--bg-glass);
-            color: var(--text-muted);
-            border-radius: var(--radius);
+            background: var(--glass);
+            color: var(--text-3);
+            border-radius: 6px;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-size: 1rem;
-            width: 36px;
-            height: 36px;
+            transition: all 0.2s ease;
+            width: 28px;
+            height: 28px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid var(--border);
-            backdrop-filter: var(--blur);
-            -webkit-backdrop-filter: var(--blur);
         }
 
         .note-action-btn:hover {
             background: var(--danger);
             color: white;
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: var(--shadow-lg);
-        }
-
-        /* Floating Editor */
-        .editor-section {
-            background: var(--bg-glass);
-            backdrop-filter: var(--blur-strong);
-            -webkit-backdrop-filter: var(--blur-strong);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-xl);
-            padding: 3rem;
-            box-shadow: var(--shadow-xl);
-            position: sticky;
-            top: 8rem;
-            height: fit-content;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow: hidden;
-        }
-
-        .editor-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--accent-gradient);
-            opacity: 0.6;
-        }
-
-        .editor-section:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-xl), 0 0 40px rgba(139, 92, 246, 0.1);
-        }
-
-        .editor-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .editor-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            letter-spacing: -0.02em;
-        }
-
-        .editor-actions {
-            display: flex;
-            gap: 1rem;
+            transform: scale(1.1);
         }
 
         .form-group {
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .form-label {
             display: block;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             font-weight: 600;
-            color: var(--text-primary);
-            font-size: 0.95rem;
-            letter-spacing: -0.01em;
+            color: var(--text-1);
+            font-size: 0.9rem;
         }
 
         .form-input {
             width: 100%;
-            padding: 1.25rem 1.5rem;
+            padding: 1rem;
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            background: var(--bg-glass);
-            backdrop-filter: var(--blur);
-            -webkit-backdrop-filter: var(--blur);
-            color: var(--text-primary);
-            font-size: 0.95rem;
+            background: var(--glass);
+            color: var(--text-1);
+            font-size: 0.9rem;
             font-family: inherit;
-            font-weight: 500;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: var(--shadow);
+            transition: border-color 0.2s ease, transform 0.2s ease;
+            will-change: transform;
         }
 
         .form-input:focus {
             outline: none;
-            border-color: var(--accent-primary);
-            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1), var(--shadow-lg);
-            transform: translateY(-2px);
-            background: var(--bg-glass-strong);
-        }
-
-        .form-input::placeholder {
-            color: var(--text-muted);
-            font-weight: 400;
+            border-color: var(--accent);
+            transform: translateY(-1px);
         }
 
         .form-textarea {
-            min-height: 400px;
+            min-height: 300px;
             resize: vertical;
-            line-height: 1.7;
-            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
-            font-size: 0.9rem;
+            line-height: 1.6;
+            font-family: 'SF Mono', Monaco, Consolas, monospace;
         }
 
         .empty-state {
             text-align: center;
-            padding: 6rem 3rem;
-            color: var(--text-muted);
+            padding: 4rem 2rem;
+            color: var(--text-3);
         }
 
         .empty-icon {
-            font-size: 5rem;
-            margin-bottom: 2rem;
-            opacity: 0.4;
-            display: block;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .empty-state h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 3rem;
             margin-bottom: 1rem;
-            color: var(--text-secondary);
-            letter-spacing: -0.02em;
-        }
-
-        .empty-state p {
-            font-size: 1rem;
-            line-height: 1.6;
-            max-width: 400px;
-            margin: 0 auto;
+            opacity: 0.6;
+            display: block;
         }
 
         .privacy-info {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            margin-top: 3rem;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: var(--blur);
-            -webkit-backdrop-filter: var(--blur);
-        }
-
-        .privacy-info::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--success), rgba(16, 185, 129, 0.3));
+            background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(16,185,129,0.05));
+            border: 1px solid rgba(16,185,129,0.2);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: var(--text-2);
         }
 
         .privacy-info strong {
             color: var(--success);
-            font-weight: 700;
         }
 
-        /* Ultra Modern Notifications */
+        /* Optimized notifications */
         .notification {
             position: fixed;
-            top: 2rem;
-            right: 2rem;
-            padding: 1.5rem 2rem;
-            border-radius: var(--radius-lg);
+            top: 1rem;
+            right: 1rem;
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius);
             color: white;
             font-weight: 600;
-            font-size: 0.95rem;
-            z-index: 2000;
-            transform: translateX(120%) scale(0.8);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: var(--shadow-xl);
-            backdrop-filter: var(--blur-strong);
-            -webkit-backdrop-filter: var(--blur-strong);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            min-width: 350px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .notification::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            animation: notificationShine 2s ease-in-out;
+            font-size: 0.9rem;
+            z-index: 200;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            box-shadow: var(--shadow-lg);
+            min-width: 300px;
+            will-change: transform;
         }
 
         .notification.show {
-            transform: translateX(0) scale(1);
+            transform: translateX(0);
         }
 
         .notification.success {
-            background: linear-gradient(135deg, var(--success) 0%, rgba(16, 185, 129, 0.9) 100%);
+            background: var(--success);
         }
 
         .notification.error {
-            background: linear-gradient(135deg, var(--danger) 0%, rgba(239, 68, 68, 0.9) 100%);
+            background: var(--danger);
         }
 
-        @keyframes notificationShine {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-
-        /* Floating Action Button */
-        .fab {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 64px;
-            height: 64px;
-            background: var(--accent-gradient);
-            border: none;
-            border-radius: 50%;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: var(--shadow-xl);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 1000;
-            display: none;
-        }
-
-        .fab:hover {
-            transform: scale(1.1) rotate(90deg);
-            box-shadow: var(--shadow-xl), var(--shadow-glow);
-        }
-
-        /* Animations */
+        /* Optimized animations */
         .fade-in {
-            animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeIn 0.3s ease;
         }
 
-        @keyframes fadeInUp {
-            from { 
-                opacity: 0; 
-                transform: translateY(30px) scale(0.95);
-            }
-            to { 
-                opacity: 1; 
-                transform: translateY(0) scale(1);
-            }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 12px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg-tertiary);
-            border-radius: 6px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            border-radius: 6px;
-            transition: all 0.3s ease;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(135deg, var(--accent-secondary), var(--accent-tertiary));
-        }
-
-        /* Mobile Responsive */
+        /* Mobile optimizations */
         @media (max-width: 1024px) {
             .main-content {
                 grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .editor-section {
-                position: static;
+                gap: 1.5rem;
             }
         }
 
         @media (max-width: 768px) {
-            header {
-                top: 1rem;
-                left: 1rem;
-                right: 1rem;
-                padding: 1.25rem 1.5rem;
-            }
-
-            .container {
-                padding: 0 1rem;
-            }
-
+            .container { padding: 0 1rem; }
+            
             .header-content {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-
-            .search-input {
-                width: 100%;
-            }
-
-            .notes-section,
-            .editor-section {
-                padding: 2rem;
-                border-radius: var(--radius-lg);
-            }
-
-            main {
-                padding: 6rem 0 2rem;
-            }
-
-            .fab {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .section-title {
-                font-size: 1.75rem;
-            }
-
-            .stats {
                 flex-direction: column;
                 gap: 1rem;
             }
+            
+            .search-input { width: 100%; }
+            
+            .section { padding: 1.5rem; }
+            
+            main { padding: 5rem 0 2rem; }
+            
+            .section-title { font-size: 1.25rem; }
+            
+            .stats { flex-direction: column; gap: 0.5rem; }
         }
 
-        @media (max-width: 480px) {
-            .notes-section,
-            .editor-section {
-                padding: 1.5rem;
-            }
-
-            .btn {
-                padding: 0.875rem 1.5rem;
-                font-size: 0.9rem;
-            }
-
-            .btn-icon {
-                width: 48px;
-                height: 48px;
-                padding: 0.875rem;
-            }
-
-            .notification {
-                right: 1rem;
-                left: 1rem;
-                min-width: auto;
-            }
+        /* Performance optimizations */
+        .gpu-accelerated {
+            transform: translateZ(0);
+            will-change: transform;
         }
 
-        /* Focus and accessibility */
-        .btn:focus-visible,
-        .form-input:focus-visible,
-        .search-input:focus-visible {
-            outline: 2px solid var(--accent-primary);
-            outline-offset: 2px;
-        }
-
-        /* Reduced motion */
+        /* Reduce motion for accessibility */
         @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
+            *, *::before, *::after {
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
@@ -953,15 +530,11 @@
             </a>
             <div class="header-actions">
                 <div class="search-container">
-                    <input type="text" class="search-input" placeholder="Search your universe of notes..." id="searchInput">
+                    <input type="text" class="search-input" placeholder="Search notes..." id="searchInput">
                     <span class="search-icon">🔍</span>
                 </div>
-                <button class="btn btn-secondary btn-icon" id="themeToggle" title="Toggle theme">
-                    ☀️
-                </button>
-                <button class="btn btn-primary" id="newNoteBtn">
-                    ✨ Create Note
-                </button>
+                <button class="btn btn-secondary btn-icon" id="themeToggle" title="Toggle theme">☀️</button>
+                <button class="btn btn-primary" id="newNoteBtn">✨ New Note</button>
             </div>
         </div>
     </header>
@@ -969,52 +542,48 @@
     <main>
         <div class="container">
             <div class="main-content">
-                <div class="notes-section">
+                <div class="section">
                     <div class="section-header">
-                        <h2 class="section-title">Your Universe</h2>
+                        <h2 class="section-title">Your Notes</h2>
                         <div class="stats">
                             <div class="stat-item">
-                                <span>🌟</span>
+                                <span>📝</span>
                                 <span id="noteCount">0 notes</span>
                             </div>
                             <div class="stat-item">
-                                <span>💎</span>
-                                <span id="storageInfo">0 KB stored</span>
+                                <span>💾</span>
+                                <span id="storageInfo">0 KB</span>
                             </div>
                         </div>
                     </div>
                     <div class="notes-grid" id="notesGrid">
                         <div class="empty-state">
-                            <span class="empty-icon">🌌</span>
-                            <h3>Your creative space awaits</h3>
-                            <p>Begin your journey with your first note. Every great idea starts with a single thought.</p>
+                            <span class="empty-icon">📝</span>
+                            <h3>No notes yet</h3>
+                            <p>Create your first note to get started</p>
                         </div>
                     </div>
                     <div class="privacy-info">
-                        <strong>🛡️ Ultra-Secure & Private:</strong> Your thoughts remain yours alone. All notes are encrypted and stored locally in your browser. Zero cloud storage, zero tracking, zero compromise on your privacy.
+                        <strong>🔒 100% Private:</strong> All notes stored locally in browser cookies. Zero cloud storage.
                     </div>
                 </div>
 
-                <div class="editor-section">
-                    <div class="editor-header">
-                        <h3 class="editor-title" id="editorTitle">✨ New Creation</h3>
-                        <div class="editor-actions">
-                            <button class="btn btn-secondary btn-icon" id="clearBtn" title="Clear canvas">
-                                🗑️
-                            </button>
-                            <button class="btn btn-primary" id="saveBtn">
-                                💫 Save
-                            </button>
+                <div class="section">
+                    <div class="section-header">
+                        <h3 id="editorTitle">✨ New Note</h3>
+                        <div class="header-actions">
+                            <button class="btn btn-secondary btn-icon" id="clearBtn" title="Clear">🗑️</button>
+                            <button class="btn btn-primary" id="saveBtn">💾 Save</button>
                         </div>
                     </div>
                     <form id="noteForm">
                         <div class="form-group">
                             <label class="form-label" for="noteTitle">Title</label>
-                            <input type="text" class="form-input" id="noteTitle" placeholder="Give your thought a name..." required>
+                            <input type="text" class="form-input" id="noteTitle" placeholder="Enter title..." required>
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="noteContent">Content</label>
-                            <textarea class="form-input form-textarea" id="noteContent" placeholder="Let your creativity flow..." required></textarea>
+                            <textarea class="form-input form-textarea" id="noteContent" placeholder="Start writing..." required></textarea>
                         </div>
                     </form>
                 </div>
@@ -1022,16 +591,31 @@
         </div>
     </main>
 
-    <button class="fab" id="fabBtn" title="Quick note">
-        ✨
-    </button>
-
     <script>
-        class UltraModernNotes {
+        // Optimized Notes App with performance focus
+        class FastNotes {
             constructor() {
+                // Cache DOM elements for performance
+                this.elements = {
+                    notesGrid: document.getElementById('notesGrid'),
+                    noteTitle: document.getElementById('noteTitle'),
+                    noteContent: document.getElementById('noteContent'),
+                    editorTitle: document.getElementById('editorTitle'),
+                    noteCount: document.getElementById('noteCount'),
+                    storageInfo: document.getElementById('storageInfo'),
+                    searchInput: document.getElementById('searchInput'),
+                    themeToggle: document.getElementById('themeToggle'),
+                    saveBtn: document.getElementById('saveBtn'),
+                    clearBtn: document.getElementById('clearBtn'),
+                    newNoteBtn: document.getElementById('newNoteBtn'),
+                    noteForm: document.getElementById('noteForm')
+                };
+
                 this.notes = this.loadNotes();
                 this.currentNoteId = null;
                 this.searchTerm = '';
+                this.saveTimeout = null;
+                
                 this.init();
             }
 
@@ -1041,136 +625,86 @@
                 this.updateStats();
                 this.loadTheme();
                 this.addKeyboardShortcuts();
-                this.initAnimations();
-            }
-
-            initAnimations() {
-                // Stagger animation for initial load
-                setTimeout(() => {
-                    document.body.style.opacity = '1';
-                    document.body.style.transform = 'translateY(0)';
-                }, 100);
-
-                // Intersection Observer for scroll animations
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.style.opacity = '1';
-                            entry.target.style.transform = 'translateY(0)';
-                        }
-                    });
-                }, { threshold: 0.1 });
-
-                document.querySelectorAll('.note-card').forEach(card => {
-                    observer.observe(card);
-                });
             }
 
             bindEvents() {
-                // New note button
-                document.getElementById('newNoteBtn').addEventListener('click', () => {
-                    this.newNote();
-                });
-
-                // FAB button
-                document.getElementById('fabBtn').addEventListener('click', () => {
-                    this.newNote();
-                });
-
-                // Save button
-                document.getElementById('saveBtn').addEventListener('click', () => {
-                    this.saveCurrentNote();
-                });
-
-                // Clear button
-                document.getElementById('clearBtn').addEventListener('click', () => {
-                    this.clearEditor();
-                });
-
-                // Search input
-                document.getElementById('searchInput').addEventListener('input', (e) => {
-                    this.searchTerm = e.target.value.toLowerCase();
-                    this.renderNotes();
-                });
-
-                // Theme toggle
-                document.getElementById('themeToggle').addEventListener('click', () => {
-                    this.toggleTheme();
-                });
-
-                // Form submission
-                document.getElementById('noteForm').addEventListener('submit', (e) => {
+                // Use event delegation for better performance
+                document.addEventListener('click', this.handleClick.bind(this));
+                
+                // Optimized input handlers with debouncing
+                this.elements.searchInput.addEventListener('input', this.debounce(this.handleSearch.bind(this), 300));
+                this.elements.noteTitle.addEventListener('input', this.debounce(this.autoSave.bind(this), 1000));
+                this.elements.noteContent.addEventListener('input', this.debounce(this.autoSave.bind(this), 1000));
+                
+                this.elements.noteForm.addEventListener('submit', (e) => {
                     e.preventDefault();
                     this.saveCurrentNote();
                 });
+            }
 
-                // Enhanced auto-save with visual feedback
-                let saveTimeout;
-                ['noteTitle', 'noteContent'].forEach(id => {
-                    document.getElementById(id).addEventListener('input', () => {
-                        clearTimeout(saveTimeout);
-                        
-                        // Visual feedback for typing
-                        const element = document.getElementById(id);
-                        element.style.borderColor = 'var(--accent-tertiary)';
-                        
-                        saveTimeout = setTimeout(() => {
-                            if (this.currentNoteId) {
-                                this.saveCurrentNote(true);
-                            }
-                            element.style.borderColor = 'var(--border)';
-                        }, 2000);
-                    });
-                });
+            handleClick(e) {
+                const target = e.target;
+                
+                if (target.id === 'newNoteBtn') {
+                    this.newNote();
+                } else if (target.id === 'saveBtn') {
+                    this.saveCurrentNote();
+                } else if (target.id === 'clearBtn') {
+                    this.clearEditor();
+                } else if (target.id === 'themeToggle') {
+                    this.toggleTheme();
+                } else if (target.closest('.note-card')) {
+                    const noteId = target.closest('.note-card').dataset.noteId;
+                    if (noteId) this.editNote(noteId);
+                } else if (target.classList.contains('note-action-btn')) {
+                    e.stopPropagation();
+                    const noteId = target.dataset.noteId;
+                    if (noteId) this.deleteNote(noteId);
+                }
+            }
 
-                // Smooth scroll behavior
-                document.addEventListener('click', (e) => {
-                    if (e.target.closest('.note-card')) {
-                        if (window.innerWidth <= 1024) {
-                            setTimeout(() => {
-                                document.querySelector('.editor-section').scrollIntoView({ 
-                                    behavior: 'smooth',
-                                    block: 'start'
-                                });
-                            }, 100);
-                        }
-                    }
-                });
+            handleSearch(e) {
+                this.searchTerm = e.target.value.toLowerCase();
+                this.renderNotes();
+            }
+
+            autoSave() {
+                if (this.currentNoteId) {
+                    this.saveCurrentNote(true);
+                }
+            }
+
+            debounce(func, wait) {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout);
+                        func(...args);
+                    };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
             }
 
             addKeyboardShortcuts() {
                 document.addEventListener('keydown', (e) => {
-                    // Ctrl/Cmd + N for new note
                     if ((e.ctrlKey || e.metaKey) && e.key === 'n') {
                         e.preventDefault();
                         this.newNote();
-                    }
-                    
-                    // Ctrl/Cmd + S for save
-                    if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                    } else if ((e.ctrlKey || e.metaKey) && e.key === 's') {
                         e.preventDefault();
                         this.saveCurrentNote();
-                    }
-                    
-                    // Ctrl/Cmd + K for search
-                    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                    } else if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
                         e.preventDefault();
-                        document.getElementById('searchInput').focus();
-                    }
-
-                    // Escape to clear search
-                    if (e.key === 'Escape') {
-                        document.getElementById('searchInput').value = '';
-                        this.searchTerm = '';
-                        this.renderNotes();
+                        this.elements.searchInput.focus();
                     }
                 });
             }
 
             loadNotes() {
                 try {
-                    const notesData = this.getCookie('ultra_privacy_notes');
-                    return notesData ? JSON.parse(notesData) : [];
+                    const data = this.getCookie('fast_notes');
+                    return data ? JSON.parse(data) : [];
                 } catch (error) {
                     console.error('Error loading notes:', error);
                     return [];
@@ -1179,19 +713,17 @@
 
             saveNotes() {
                 try {
-                    this.setCookie('ultra_privacy_notes', JSON.stringify(this.notes), 365);
+                    this.setCookie('fast_notes', JSON.stringify(this.notes), 365);
                     this.updateStats();
                 } catch (error) {
-                    this.showNotification('🚨 Storage limit reached. Consider exporting some notes.', 'error');
-                    console.error('Error saving notes:', error);
+                    this.showNotification('Storage error', 'error');
                 }
             }
 
             getCookie(name) {
                 const value = `; ${document.cookie}`;
                 const parts = value.split(`; ${name}=`);
-                if (parts.length === 2) return parts.pop().split(';').shift();
-                return null;
+                return parts.length === 2 ? parts.pop().split(';').shift() : null;
             }
 
             setCookie(name, value, days) {
@@ -1207,35 +739,24 @@
             newNote() {
                 this.currentNoteId = null;
                 this.clearEditor();
-                document.getElementById('editorTitle').textContent = '✨ New Creation';
-                document.getElementById('noteTitle').focus();
-                
-                // Enhanced animation
-                const editor = document.querySelector('.editor-section');
-                editor.style.transform = 'scale(0.95) translateY(10px)';
-                editor.style.opacity = '0.8';
-                setTimeout(() => {
-                    editor.style.transform = 'scale(1) translateY(0)';
-                    editor.style.opacity = '1';
-                }, 150);
+                this.elements.editorTitle.textContent = '✨ New Note';
+                this.elements.noteTitle.focus();
             }
 
             clearEditor() {
-                document.getElementById('noteTitle').value = '';
-                document.getElementById('noteContent').value = '';
+                this.elements.noteTitle.value = '';
+                this.elements.noteContent.value = '';
                 this.currentNoteId = null;
-                document.getElementById('editorTitle').textContent = '✨ New Creation';
+                this.elements.editorTitle.textContent = '✨ New Note';
                 this.updateActiveNote();
             }
 
             saveCurrentNote(silent = false) {
-                const title = document.getElementById('noteTitle').value.trim();
-                const content = document.getElementById('noteContent').value.trim();
+                const title = this.elements.noteTitle.value.trim();
+                const content = this.elements.noteContent.value.trim();
 
                 if (!title || !content) {
-                    if (!silent) {
-                        this.showNotification('🎯 Both title and content are required', 'error');
-                    }
+                    if (!silent) this.showNotification('Title and content required', 'error');
                     return;
                 }
 
@@ -1252,9 +773,7 @@
 
                 if (this.currentNoteId) {
                     const index = this.notes.findIndex(n => n.id === this.currentNoteId);
-                    if (index !== -1) {
-                        this.notes[index] = noteData;
-                    }
+                    if (index !== -1) this.notes[index] = noteData;
                 } else {
                     this.notes.unshift(noteData);
                     this.currentNoteId = noteData.id;
@@ -1264,20 +783,8 @@
                 this.renderNotes();
                 this.updateActiveNote();
                 
-                if (!silent) {
-                    this.showNotification('🌟 Note saved to your universe!', 'success');
-                    
-                    // Enhanced save animation
-                    const saveBtn = document.getElementById('saveBtn');
-                    saveBtn.style.transform = 'scale(0.9) rotate(5deg)';
-                    saveBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
-                    setTimeout(() => {
-                        saveBtn.style.transform = 'scale(1) rotate(0deg)';
-                        saveBtn.style.background = 'var(--accent-gradient)';
-                    }, 200);
-                }
-
-                document.getElementById('editorTitle').textContent = `🌟 ${title}`;
+                if (!silent) this.showNotification('Note saved!', 'success');
+                this.elements.editorTitle.textContent = `📝 ${title}`;
             }
 
             editNote(id) {
@@ -1285,120 +792,94 @@
                 if (!note) return;
 
                 this.currentNoteId = id;
-                document.getElementById('noteTitle').value = note.title;
-                document.getElementById('noteContent').value = note.content;
-                document.getElementById('editorTitle').textContent = `🌟 ${note.title}`;
+                this.elements.noteTitle.value = note.title;
+                this.elements.noteContent.value = note.content;
+                this.elements.editorTitle.textContent = `📝 ${note.title}`;
                 this.updateActiveNote();
             }
 
             deleteNote(id) {
                 const note = this.notes.find(n => n.id === id);
-                if (!note) return;
+                if (!note || !confirm(`Delete "${note.title}"?`)) return;
 
-                if (confirm(`🗑️ Delete "${note.title}" forever?`)) {
-                    this.notes = this.notes.filter(n => n.id !== id);
-                    this.saveNotes();
-                    this.renderNotes();
-                    
-                    if (this.currentNoteId === id) {
-                        this.clearEditor();
-                    }
-                    
-                    this.showNotification('🗑️ Note deleted from universe', 'success');
-                }
+                this.notes = this.notes.filter(n => n.id !== id);
+                this.saveNotes();
+                this.renderNotes();
+                
+                if (this.currentNoteId === id) this.clearEditor();
+                this.showNotification('Note deleted', 'success');
             }
 
             renderNotes() {
-                const grid = document.getElementById('notesGrid');
                 const filteredNotes = this.notes.filter(note => 
                     note.title.toLowerCase().includes(this.searchTerm) ||
                     note.content.toLowerCase().includes(this.searchTerm)
                 );
 
                 if (filteredNotes.length === 0) {
-                    const emptyMessage = this.searchTerm ? 
-                        { icon: '🔍', title: 'No matching notes found', desc: 'Try adjusting your search terms' } :
-                        { icon: '🌌', title: 'Your creative space awaits', desc: 'Begin your journey with your first note. Every great idea starts with a single thought.' };
-                    
-                    grid.innerHTML = `
+                    this.elements.notesGrid.innerHTML = `
                         <div class="empty-state">
-                            <span class="empty-icon">${emptyMessage.icon}</span>
-                            <h3>${emptyMessage.title}</h3>
-                            <p>${emptyMessage.desc}</p>
+                            <span class="empty-icon">${this.searchTerm ? '🔍' : '📝'}</span>
+                            <h3>${this.searchTerm ? 'No matches' : 'No notes yet'}</h3>
+                            <p>${this.searchTerm ? 'Try different keywords' : 'Create your first note'}</p>
                         </div>
                     `;
                     return;
                 }
 
-                grid.innerHTML = filteredNotes.map((note, index) => `
-                    <div class="note-card fade-in ${note.id === this.currentNoteId ? 'active' : ''}" 
-                         onclick="app.editNote('${note.id}')"
-                         style="animation-delay: ${index * 0.1}s"
-                         tabindex="0"
-                         role="button"
-                         aria-label="Edit note: ${this.escapeHtml(note.title)}">
+                // Use DocumentFragment for better performance
+                const fragment = document.createDocumentFragment();
+                
+                filteredNotes.forEach(note => {
+                    const card = document.createElement('div');
+                    card.className = `note-card fade-in ${note.id === this.currentNoteId ? 'active' : ''}`;
+                    card.dataset.noteId = note.id;
+                    card.innerHTML = `
                         <div class="note-title">${this.escapeHtml(note.title)}</div>
                         <div class="note-preview">${this.escapeHtml(note.content)}</div>
                         <div class="note-meta">
-                            <div class="note-date">
-                                <span>⏰</span>
-                                <span>${this.formatDate(note.updatedAt)}</span>
-                            </div>
+                            <span>⏰ ${this.formatDate(note.updatedAt)}</span>
                             <div class="note-actions">
-                                <button class="note-action-btn" 
-                                        onclick="event.stopPropagation(); app.deleteNote('${note.id}')" 
-                                        title="Delete note"
-                                        aria-label="Delete note: ${this.escapeHtml(note.title)}">
-                                    🗑️
-                                </button>
+                                <button class="note-action-btn" data-note-id="${note.id}" title="Delete">🗑️</button>
                             </div>
                         </div>
-                    </div>
-                `).join('');
+                    `;
+                    fragment.appendChild(card);
+                });
+
+                this.elements.notesGrid.innerHTML = '';
+                this.elements.notesGrid.appendChild(fragment);
             }
 
             updateActiveNote() {
+                // Use class toggle for better performance
                 document.querySelectorAll('.note-card').forEach(card => {
-                    card.classList.remove('active');
+                    card.classList.toggle('active', card.dataset.noteId === this.currentNoteId);
                 });
-                
-                if (this.currentNoteId) {
-                    const activeCard = document.querySelector(`[onclick="app.editNote('${this.currentNoteId}')"]`);
-                    if (activeCard) {
-                        activeCard.classList.add('active');
-                    }
-                }
             }
 
             updateStats() {
-                const noteCount = this.notes.length;
-                const storageSize = new Blob([JSON.stringify(this.notes)]).size;
+                const count = this.notes.length;
+                const size = new Blob([JSON.stringify(this.notes)]).size;
                 
-                document.getElementById('noteCount').textContent = 
-                    `${noteCount} ${noteCount === 1 ? 'note' : 'notes'}`;
-                document.getElementById('storageInfo').textContent = 
-                    `${(storageSize / 1024).toFixed(1)} KB stored`;
+                this.elements.noteCount.textContent = `${count} note${count !== 1 ? 's' : ''}`;
+                this.elements.storageInfo.textContent = `${(size / 1024).toFixed(1)} KB`;
             }
 
             formatDate(dateString) {
                 const date = new Date(dateString);
                 const now = new Date();
-                const diffTime = Math.abs(now - date);
-                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-                const diffHours = Math.ceil(diffTime / (1000 * 60 * 60));
-                const diffMinutes = Math.ceil(diffTime / (1000 * 60));
+                const diff = now - date;
+                const minutes = Math.floor(diff / 60000);
+                const hours = Math.floor(diff / 3600000);
+                const days = Math.floor(diff / 86400000);
 
-                if (diffMinutes < 2) return 'Just now';
-                if (diffMinutes < 60) return `${diffMinutes}m ago`;
-                if (diffHours < 24) return `${diffHours}h ago`;
-                if (diffDays === 1) return 'Yesterday';
-                if (diffDays <= 7) return `${diffDays} days ago`;
+                if (minutes < 1) return 'Just now';
+                if (minutes < 60) return `${minutes}m ago`;
+                if (hours < 24) return `${hours}h ago`;
+                if (days < 7) return `${days}d ago`;
                 
-                return date.toLocaleDateString('en-US', { 
-                    month: 'short', 
-                    day: 'numeric',
-                    year: date.getFullYear() !== now.getFullYear() ? 'numeric' : undefined
-                });
+                return date.toLocaleDateString();
             }
 
             escapeHtml(text) {
@@ -1413,55 +894,44 @@
                 notification.textContent = message;
                 document.body.appendChild(notification);
 
-                setTimeout(() => notification.classList.add('show'), 100);
+                // Use requestAnimationFrame for smooth animations
+                requestAnimationFrame(() => {
+                    notification.classList.add('show');
+                });
+
                 setTimeout(() => {
                     notification.classList.remove('show');
                     setTimeout(() => {
                         if (document.body.contains(notification)) {
                             document.body.removeChild(notification);
                         }
-                    }, 500);
-                }, 4000);
+                    }, 300);
+                }, 3000);
             }
 
             toggleTheme() {
-                const currentTheme = document.documentElement.getAttribute('data-theme');
-                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                const current = document.documentElement.getAttribute('data-theme');
+                const newTheme = current === 'dark' ? 'light' : 'dark';
                 
                 document.documentElement.setAttribute('data-theme', newTheme);
-                document.getElementById('themeToggle').textContent = newTheme === 'dark' ? '☀️' : '🌙';
-                
+                this.elements.themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
                 this.setCookie('theme', newTheme, 365);
-                
-                // Enhanced theme transition
-                document.body.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-                setTimeout(() => {
-                    document.body.style.transition = '';
-                }, 500);
             }
 
             loadTheme() {
-                const savedTheme = this.getCookie('theme') || 
+                const saved = this.getCookie('theme') || 
                     (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-                document.documentElement.setAttribute('data-theme', savedTheme);
-                document.getElementById('themeToggle').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+                document.documentElement.setAttribute('data-theme', saved);
+                this.elements.themeToggle.textContent = saved === 'dark' ? '☀️' : '🌙';
             }
         }
 
-        // Initialize the ultra-modern app
-        const app = new UltraModernNotes();
-
-        // Enhanced loading experience
-        document.addEventListener('DOMContentLoaded', () => {
-            document.body.style.opacity = '0';
-            document.body.style.transform = 'translateY(20px)';
-            document.body.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-            
-            setTimeout(() => {
-                document.body.style.opacity = '1';
-                document.body.style.transform = 'translateY(0)';
-            }, 200);
-        });
+        // Initialize app when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => new FastNotes());
+        } else {
+            new FastNotes();
+        }
     </script>
 </body>
 </html>
