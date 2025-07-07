@@ -653,13 +653,13 @@
                     this.clearEditor();
                 } else if (target.id === 'themeToggle') {
                     this.toggleTheme();
-                } else if (target.closest('.note-card')) {
-                    const noteId = target.closest('.note-card').dataset.noteId;
-                    if (noteId) this.editNote(noteId);
                 } else if (target.classList.contains('note-action-btn')) {
                     e.stopPropagation();
                     const noteId = target.dataset.noteId;
                     if (noteId) this.deleteNote(noteId);
+                } else if (target.closest('.note-card') && !target.closest('.note-actions')) {
+                    const noteId = target.closest('.note-card').dataset.noteId;
+                    if (noteId) this.editNote(noteId);
                 }
             }
 
@@ -800,7 +800,12 @@
 
             deleteNote(id) {
                 const note = this.notes.find(n => n.id === id);
-                if (!note || !confirm(`Delete "${note.title}"?`)) return;
+                if (!note) {
+                    console.error('Note not found:', id);
+                    return;
+                }
+                
+                if (!confirm(`Delete "${note.title}"?`)) return;
 
                 this.notes = this.notes.filter(n => n.id !== id);
                 this.saveNotes();
@@ -840,7 +845,7 @@
                         <div class="note-meta">
                             <span>⏰ ${this.formatDate(note.updatedAt)}</span>
                             <div class="note-actions">
-                                <button class="note-action-btn" data-note-id="${note.id}" title="Delete">🗑️</button>
+                                <button class="note-action-btn" data-note-id="${note.id}" title="Delete thought">🗑️</button>
                             </div>
                         </div>
                     `;
